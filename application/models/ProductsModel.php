@@ -25,4 +25,46 @@ class ProductsModel extends CI_Model{
     }
   }
 
+  //Get All Product Categories from Database
+  public function get_all_product_categories() {
+    $query = $this->db->query('SELECT DISTINCT Category FROM product');
+    return $query->result_array();
+  }
+
+  //Add New Product
+  public function add_product() {
+    $this->load->helper('url');
+    $newproduct = array(
+      'Name' => $this->input->post('pname'),
+      'Category' => $this->input->post('pcat'),
+      'Price' => $this->input->post('pprice')
+    );
+    return $this->db->insert('product', $newproduct);
+  }
+
+  //Save Changes
+  public function edit_product($id) {
+    $this->load->helper('url');
+    $product = array(
+      'Name' => $this->input->post('pname'),
+      'Category' => $this->input->post('pcat'),
+      'Price' => $this->input->post('pprice')
+    );
+    $this->db->where('ProductID', $id);
+    return $this->db->update('product', $product);
+
+    if ($id === 0) {
+      //return $this->db->insert('news', $data);
+    } else {
+      $this->db->where('ProductID', $id);
+      return $this->db->update('product', $product);
+    }
+
+  }
+
+  public function delete_product($id) {
+    $this->db->where('ProductID', $id);
+    return $this->db->delete('product');
+  }
+
 }
