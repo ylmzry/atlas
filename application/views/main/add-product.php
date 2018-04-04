@@ -37,9 +37,10 @@
                         <label class="">Product Category</label>
                         <?php if(!empty($all_products_categories)) { ?>
                             <select class="full-width select2-hidden-accessible" data-placeholder="SELECT A PRODUCT CATEGORY" data-init-plugin="select2" tabindex="-1" aria-hidden="true" name="pcat">
-                              <?php foreach ($all_products_categories as $category) {
+                              <?php
+                              foreach ($all_products_categories as $category) {
                                   foreach ($category as $cat) {
-                                    echo "<option value=" . $cat . ">" . $cat . "</option>";
+                                    echo '<option value="' . $cat . '">' . $cat . "</option>";
                                   }
                               } ?>
                             </select>

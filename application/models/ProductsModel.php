@@ -28,11 +28,18 @@ class ProductsModel extends CI_Model{
   //Get All Product Categories from Database
   public function get_all_product_categories() {
     $query = $this->db->query('SELECT DISTINCT Category FROM product');
+    // $query = $this->db->query('SELECT DISTINCT Category FROM category');
     return $query->result_array();
   }
 
   //Add New Product
   public function add_product() {
+    /*
+    if (count($this->get_all_product_categories()) === 0) {
+      redirect('/category/add');  
+    }
+     */
+
     $this->load->helper('url');
     $newproduct = array(
       'Name' => $this->input->post('pname'),
