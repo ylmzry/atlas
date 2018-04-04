@@ -11,7 +11,7 @@
     <link rel="apple-touch-icon" sizes="152x152" href="pages/ico/152.png">
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes ">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta content="" name="description" />
     <meta content="" name="author" />
