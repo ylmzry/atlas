@@ -41,9 +41,9 @@
                               <?php foreach ($all_products_categories as $category) {
                                   foreach ($category as $cat) {
                                     if ($cat==$product['Category']) {
-                                      echo "<option value=" . $cat . " selected>" . $cat . "</option>";
+                                      echo "<option value='" . $cat . "' selected>" . $cat . "</option>";
                                     } else {
-                                      echo "<option value=" . $cat . ">" . $cat . "</option>";
+                                      echo "<option value='" . $cat . "'>" . $cat . "</option>";
                                     }
                                   }
                               } ?>
