@@ -13,7 +13,7 @@
   </div>
   <div class="d-flex align-items-center">
     <!-- START NOTIFICATION LIST -->
-    <ul class="hidden-md-down notification-list no-margin hidden-sm-down b-grey b-r no-style p-l-30 p-r-20">
+    <ul class="hidden-md-down notification-list no-margin hidden-sm-down b-grey b-r no-style p-l-30 p-r-20" style="display:none">
       <li class="p-r-10 inline">
         <div class="dropdown">
           <a href="javascript:;" id="notification-center" class="header-icon pg pg-world" data-toggle="dropdown">
@@ -145,14 +145,14 @@
     <div class="dropdown pull-right hidden-md-down">
       <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="thumbnail-wrapper d32 circular inline">
-        <img src="assets/img/profiles/avatar.jpg" alt="" data-src="assets/img/profiles/avatar.jpg" data-src-retina="assets/img/profiles/avatar_small2x.jpg" width="32" height="32">
+        <img src="<?php echo base_url() ?>template/pagesadmin/assets/img/profiles/avatar.jpg" alt="" data-src="<?php echo base_url() ?>template/pagesadmin/assets/img/profiles/avatar.jpg" data-src-retina="<?php echo base_url() ?>template/pagesadmin/assets/img/profiles/avatar.jpg" width="32" height="32">
         </span>
       </button>
       <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
         <a href="#" class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>
         <a href="#" class="dropdown-item"><i class="pg-outdent"></i> Feedback</a>
         <a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>
-        <a href="#" class="clearfix bg-master-lighter dropdown-item">
+        <a href="<?php echo base_url() ?>index.php/auth/logout" class="clearfix bg-master-lighter dropdown-item">
           <span class="pull-left">Logout</span>
           <span class="pull-right"><i class="pg-power"></i></span>
         </a>
