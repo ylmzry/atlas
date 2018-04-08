@@ -20,6 +20,7 @@ class Products extends CI_Controller{
       $this->load->css('template/pagesadmin/assets/plugins/bootstrap-datepicker/css/datepicker3.css');
       $this->load->css('template/pagesadmin/assets/plugins/mapplic/css/mapplic.css');
       $this->load->css('template/pagesadmin/assets/css/dashboard.widgets.css');
+      $this->load->css('template/pagesadmin/assets/css/style.css');
       $this->load->css('template/pagesadmin/pages/css/pages-icons.css');
       $this->load->css('template/pagesadmin/pages/css/themes/light.css');
 

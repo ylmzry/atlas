@@ -34,6 +34,7 @@ class Auth extends CI_Controller
 		$this->load->css('template/pagesadmin/assets/css/dashboard.widgets.css');
 		$this->load->css('template/pagesadmin/pages/css/pages-icons.css');
 		$this->load->css('template/pagesadmin/pages/css/themes/light.css');
+		$this->load->css('template/pagesadmin/assets/css/style.css');
 
 		$this->load->js('template/pagesadmin/assets/plugins/feather-icons/feather.min.js');
 		$this->load->js('template/pagesadmin/assets/plugins/pace/pace.min.js');
@@ -327,6 +328,8 @@ class Auth extends CI_Controller
 		{
 			show_404();
 		}
+		// Defining template
+		$this->output->set_template('auth');
 
 		$user = $this->ion_auth->forgotten_password_check($code);
 
