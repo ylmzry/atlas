@@ -19,7 +19,7 @@ class Auth extends CI_Controller
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
 		$this->lang->load('auth');
-		$this->load->helper('url'); // For Base URLs
+		$this->load->helper('url'); // For Base URLss
 
 		$this->load->css('template/pagesadmin/assets/plugins/pace/pace-theme-flash.css');
 		$this->load->css('template/pagesadmin/assets/plugins/bootstrap/css/bootstrap.min.css');
