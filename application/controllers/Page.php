@@ -64,11 +64,14 @@ class Page extends CI_Controller{
   function index()
   {
 		$this->output->set_template('default');
+		//$user = $this->ion_auth->user()->row();
 		$this->load->view('main/dashboard');
+
   }
 
   public function dashboard() {
 		$this->output->set_template('default');
+		//$user = $this->ion_auth->user()->row();
 		$this->load->view('main/dashboard');
   }
 

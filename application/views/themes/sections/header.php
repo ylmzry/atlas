@@ -140,6 +140,7 @@
     <!-- END NOTIFICATIONS LIST -->
     <!-- START User Info-->
     <div class="pull-left p-r-10 fs-14 font-heading hidden-md-down m-l-20">
+			<?php //echo var_dump($user); ?>
       <span class="semi-bold">David</span> <span class="text-master">Nest</span>
     </div>
     <div class="dropdown pull-right hidden-md-down">
