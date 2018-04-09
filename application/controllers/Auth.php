@@ -375,7 +375,7 @@ class Auth extends CI_Controller
 			else
 			{
 				// do we have a valid request?
-				if ($this->_valid_csrf_nonce() === FALSE || $user->id != $this->input->post('user_id'))
+				if ( /*$this->_valid_csrf_nonce() === FALSE || */ $user->id != $this->input->post('user_id'))
 				{
 
 					// something fishy might be up
@@ -477,11 +477,12 @@ class Auth extends CI_Controller
 			if ($this->input->post('confirm') == 'yes')
 			{
 				// do we have a valid request?
-				if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id'))
+				/*
+				if ( $this->_valid_csrf_nonce() === FALSE  || $id != $this->input->post('id'))
 				{
 					return show_error($this->lang->line('error_csrf'));
 				}
-
+				*/
 				// do we have the right userlevel?
 				if ($this->ion_auth->logged_in() && $this->ion_auth->is_admin())
 				{
@@ -633,10 +634,12 @@ class Auth extends CI_Controller
 		if (isset($_POST) && !empty($_POST))
 		{
 			// do we have a valid request?
+			/* COMMENTED OUT BY ERAY
 			if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id'))
 			{
 				show_error($this->lang->line('error_csrf'));
 			}
+			*/
 
 			// update the password if it was posted
 			if ($this->input->post('password'))

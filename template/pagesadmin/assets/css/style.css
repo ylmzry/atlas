@@ -51,3 +51,13 @@ input[type=text], input[type=email], input[type=password] {
 .login-wrapper .login-container h1 {
   font-size: 18px !important;
 }
+
+.checkbox input[type=checkbox] {
+  height: auto !important;
+      width: auto !important;
+      opacity: 1 !important;
+}
+
+.auth-wide  .login-container {
+  width: auto !important;
+}

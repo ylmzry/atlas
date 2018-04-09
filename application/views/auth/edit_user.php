@@ -78,7 +78,7 @@
 
           <?php if ($this->ion_auth->is_admin()): ?>
 
-              <h3><?php echo lang('edit_user_groups_heading');?></h3>
+              <h1><?php echo lang('edit_user_groups_heading');?></h1>
               <?php foreach ($groups as $group):?>
                   <label class="checkbox">
                   <?php
