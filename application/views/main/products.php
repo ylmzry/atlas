@@ -7,6 +7,7 @@
               <li class="breadcrumb-item active">Products
               </li>
             </ul>
+						<?php //echo var_dump($user); ?>
             <!-- END BREADCRUMB -->
             <h3 class="page-title">Products</h3>
           </div>

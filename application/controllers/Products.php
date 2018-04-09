@@ -67,7 +67,7 @@ class Products extends CI_Controller{
     function index()  {
       $data['all_products']= $this->ProductsModel->get_all_products();
       $data['page_title'] = "Products";
-  		$this->load->view('main/products',   $data);
+  		$this->load->view('main/products',$data);
     }
 
   public function view($id) {

@@ -7,6 +7,7 @@ class Page extends CI_Controller{
   {
     parent::__construct();
 		$this->load->helper('url'); // For Base URLs
+		$this->load->library('ion_auth');
 
     $this->load->css('template/pagesadmin/assets/plugins/pace/pace-theme-flash.css');
     $this->load->css('template/pagesadmin/assets/plugins/bootstrap/css/bootstrap.min.css');
@@ -64,15 +65,17 @@ class Page extends CI_Controller{
   function index()
   {
 		$this->output->set_template('default');
-		//$user = $this->ion_auth->user()->row();
-		$this->load->view('main/dashboard');
+		$data['user']=$this->ion_auth->user()->row_array();
+		$this->load->view('main/dashboard', $data);
 
   }
 
   public function dashboard() {
 		$this->output->set_template('default');
-		//$user = $this->ion_auth->user()->row();
-		$this->load->view('main/dashboard');
+
+		$data['user']=$this->ion_auth->user()->row_array();
+		$this->load->view('main/dashboard', $data);
+		// $this->load->view('main/dashboard');
   }
 
 }

@@ -45,7 +45,7 @@
     <?php echo $this->load->get_section('quickview'); ?>
     <?php echo $this->load->get_section('overlay'); ?>
     <!-- BEGIN VENDOR JS -->
-  </div>  
+  </div>
     <?php
       foreach($js as $file){
         echo "\n\t\t";
