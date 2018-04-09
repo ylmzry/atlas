@@ -14,10 +14,10 @@
 					</div>
 				</div>
 			</div>
-		 	GET LOGGED IN USER INFORMATION
-            <?php echo $user["first_name"] . " " . $user["last_name"]; ?>
-		
-			<!-- END JUMBOTRON -->
+
+		 <?php
+		 if (!$this->ion_auth->logged_in()) {	redirect('auth/login');	} ?>
+      <!-- END JUMBOTRON -->
 			<!-- START CONTAINER FLUID -->
 			<div class="container-fluid p-l-25 p-r-25 p-t-0 p-b-25 sm-padding-10" style="display: none">
 				<!-- START ROW -->

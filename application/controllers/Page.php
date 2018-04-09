@@ -8,6 +8,7 @@ class Page extends CI_Controller{
     parent::__construct();
 		$this->load->helper('url'); // For Base URLs
 		$this->load->library('ion_auth');
+		$data['user']=$this->ion_auth->user()->row_array();
 
     $this->load->css('template/pagesadmin/assets/plugins/pace/pace-theme-flash.css');
     $this->load->css('template/pagesadmin/assets/plugins/bootstrap/css/bootstrap.min.css');
@@ -56,25 +57,26 @@ class Page extends CI_Controller{
     $this->load->js('template/pagesadmin/assets/js/dashboard.js');
     $this->load->js('template/pagesadmin/assets/js/scripts.js');
 
-    $this->load->section('sidebar', 'themes/sections/sidebar');
-    $this->load->section('header', 'themes/sections/header');
-    $this->load->section('header', 'themes/sections/quickview');
-    $this->load->section('header', 'themes/sections/overlay');
+		$this->load->section('sidebar', 'themes/sections/sidebar');
+		$this->load->section('header', 'themes/sections/header', $data);
+		$this->load->section('quickview', 'themes/sections/quickview');
+		$this->load->section('overlay', 'themes/sections/overlay');
   }
 
   function index()
   {
+		
 		$this->output->set_template('default');
-		$data['user']=$this->ion_auth->user()->row_array();
+		//$data['user']=$this->ion_auth->user()->row_array();
 		$this->load->view('main/dashboard', $data);
 
   }
 
   public function dashboard() {
 		$this->output->set_template('default');
-
-		$data['user']=$this->ion_auth->user()->row_array();
-		$this->load->view('main/dashboard', $data);
+		//$data['user']=$this->ion_auth->user()->row_array();
+		//$this->load->section('header', 'themes/sections/header', $data);
+		$this->load->view('main/dashboard');
 		// $this->load->view('main/dashboard');
   }
 
