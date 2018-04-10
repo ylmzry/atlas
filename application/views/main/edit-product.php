@@ -21,17 +21,17 @@
 
                   <div class="card-header ">
                     <div class="card-title">
-                      <?php echo $page_title; ?>
+                      <h4><?php echo $product['name']; ?></h4>
 
-                      <?php var_dump($product['ProductID']); ?>
+
                     </div>
                   </div>
 
                   <div class="card-block">
-                    <?php echo form_open('products/edit/' . $product['ProductID']); ?>
+                    <?php echo form_open('products/edit/' . $product['id']); ?>
                       <div class="form-group form-group-default required ">
                         <label for="pname">Product Name</label>
-                        <input type="text" class="form-control" required="" name="pname" value="<?php echo $product['Name']; ?>">
+                        <input type="text" class="form-control" required="" name="pname" value="<?php echo $product['name']; ?>">
                       </div>
                       <div class="form-group form-group-default form-group-default-select2 required">
                         <label class="">Product Category</label>
@@ -53,7 +53,7 @@
                       </div>
                       <div class="form-group form-group-default required ">
                         <label>Product Price</label>
-                        <input type="text" class="form-control" required="" name="pprice" value="<?php echo number_format($product['Price'],2); ?>">
+                        <input type="text" class="form-control" required="" name="pprice" value="<?php echo number_format($product['price'],2); ?>">
                       </div>
                       <button class="btn btn-primary" type="submit">Save Changes</button>
                       <button class="btn btn-secondary">Return to Product</button>

@@ -17,18 +17,19 @@ class ProductsModel extends CI_Model{
   // Get Product Informations by ID
   public function get_product($id = 0)  {
     if ($id===0) {
-      $query = $this->db->get('product');
+      //$query = $this->db->get('product');
+
+      $query = $this->db->query('SELECT * FROM product LEFT OUTER JOIN categories WHERE product.id = categories.id');
       return $query->result_array();
     } else {
-      $query = $this->db->get_where('product', array('ProductID'=>$id));
+      $query = $this->db->get_where('product', array('id'=>$id));
       return $query->row_array();
     }
   }
 
   //Get All Product Categories from Database
   public function get_all_product_categories() {
-    $query = $this->db->query('SELECT DISTINCT Category FROM product');
-    // $query = $this->db->query('SELECT DISTINCT Category FROM category');
+    $query = $this->db->query('SELECT DISTINCT category_id FROM product');
     return $query->result_array();
   }
 
@@ -36,7 +37,7 @@ class ProductsModel extends CI_Model{
   public function add_product() {
     /*
     if (count($this->get_all_product_categories()) === 0) {
-      redirect('/category/add');  
+      redirect('/category/add');
     }
      */
 
@@ -57,20 +58,20 @@ class ProductsModel extends CI_Model{
       'Category' => $this->input->post('pcat'),
       'Price' => $this->input->post('pprice')
     );
-    $this->db->where('ProductID', $id);
+    $this->db->where('id', $id);
     return $this->db->update('product', $product);
 
     if ($id === 0) {
       //return $this->db->insert('news', $data);
     } else {
-      $this->db->where('ProductID', $id);
+      $this->db->where('id', $id);
       return $this->db->update('product', $product);
     }
 
   }
 
   public function delete_product($id) {
-    $this->db->where('ProductID', $id);
+    $this->db->where('id', $id);
     return $this->db->delete('product');
   }
 
