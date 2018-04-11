@@ -8,6 +8,7 @@ class Products extends CI_Controller{
 
       $this->output->set_template('default');
 	    $this->load->helper('url'); // For Base URLs
+      $this->load->library('ion_auth');
       $data['user']=$this->ion_auth->user()->row_array();
 
       $this->load->css('template/pagesadmin/assets/plugins/pace/pace-theme-flash.css');
