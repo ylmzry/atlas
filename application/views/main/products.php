@@ -7,7 +7,7 @@
               <li class="breadcrumb-item active">Products
               </li>
             </ul>
-
+						<?php var_dump($all_products); ?>
             <!-- END BREADCRUMB -->
             <h3 class="page-title">Products</h3>
           </div>
@@ -15,19 +15,19 @@
           	 <table class="table table-hover">
 							<thead>
 								<tr>
-									<th>#</th>
-									<th>Product Name</th>
-									<th>Product CategoryID</th>
-									<th>Product Price</th>
+
+									<th>Name</th>
+									<th>Category</th>
+									<th>Price</th>
                   <th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
 							<?php foreach ($all_products as $product) {
 								echo "<tr>";
-								echo "<td>" . $product['id'] . "</td>";
-								echo "<td>" . $product['name'] . "</td>";
-								echo "<td>" . $product['category_id'] . "</td>";
+
+								echo "<td>" . $product['p_name'] . "</td>";
+								echo "<td>" . $product['cat_name'] . "</td>";
 								echo "<td>EUR " . number_format($product['price'],2) . "</td>";
                 echo "<td>
                       <div class='btn-group'>
