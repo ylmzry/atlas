@@ -8,6 +8,7 @@ class Products extends CI_Controller{
 
       $this->output->set_template('default');
 	    $this->load->helper('url'); // For Base URLs
+      $data['user']=$this->ion_auth->user()->row_array();
 
       $this->load->css('template/pagesadmin/assets/plugins/pace/pace-theme-flash.css');
       $this->load->css('template/pagesadmin/assets/plugins/bootstrap/css/bootstrap.min.css');
@@ -58,7 +59,7 @@ class Products extends CI_Controller{
       $this->load->js('template/pagesadmin/assets/js/scripts.js');
 
       $this->load->section('sidebar', 'themes/sections/sidebar');
-      $this->load->section('header', 'themes/sections/header');
+	    $this->load->section('header', 'themes/sections/header', $data);
       $this->load->section('quickview', 'themes/sections/quickview');
       $this->load->section('overlay', 'themes/sections/overlay');
 

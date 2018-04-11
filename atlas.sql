@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 08, 2018 at 10:27 PM
+-- Generation Time: Apr 11, 2018 at 09:42 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -37,6 +37,27 @@ CREATE TABLE IF NOT EXISTS `activity` (
   PRIMARY KEY (`ActivityID`),
   KEY `CustomerID` (`CustomerID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`, `description`) VALUES
+(1, 'test category', '1');
 
 -- --------------------------------------------------------
 
@@ -97,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -157,38 +178,20 @@ CREATE TABLE IF NOT EXISTS `orderstatus` (
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
-  `ProductID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(200) NOT NULL,
-  `Category` varchar(200) NOT NULL,
-  `Price` decimal(10,0) NOT NULL,
-  PRIMARY KEY (`ProductID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `price` decimal(10,0) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `category_id` (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`ProductID`, `Name`, `Category`, `Price`) VALUES
-(1, 'HUAWEI MateBook X ', 'Smart Phones', '120'),
-(2, 'Microsoft Surface Laptop', 'Notebook', '1276'),
-(3, 'Lenovo IdeaPad 520s ', 'Notebook', '849'),
-(4, 'Huawei MateBook E', 'Notebook', '1119'),
-(5, 'Samsung Galaxy Note 8', 'Smart Phones', '999'),
-(6, 'Samsung Galaxy S8', 'Smart Phones', '899'),
-(7, 'Samsung Galaxy S8+', 'Smart Phones', '5');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `role`
---
-
-DROP TABLE IF EXISTS `role`;
-CREATE TABLE IF NOT EXISTS `role` (
-  `RoleID` int(11) NOT NULL AUTO_INCREMENT,
-  `RoleType` varchar(200) NOT NULL,
-  PRIMARY KEY (`RoleID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `product` (`id`, `name`, `category_id`, `price`) VALUES
+(2, 'Test', 1, '120');
 
 -- --------------------------------------------------------
 
@@ -243,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$08$lSKMVeYM7WKOg9UHdIfuE.h7UvcbQQ4B/gxH6rEG4gcG9OsIJ92G6', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1523208197, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', '$2y$08$lSKMVeYM7WKOg9UHdIfuE.h7UvcbQQ4B/gxH6rEG4gcG9OsIJ92G6', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1523482897, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '::1', 'erayyilmaz@outlook.com', '$2y$08$NEsymqNhsU13SoI0mwqfIuEP6wUs05vgvgRfTfPfeprY3k8l.Vuxq', NULL, 'erayyilmaz@outlook.com', NULL, NULL, NULL, NULL, 1523196519, NULL, 1, 'Eray', 'Yilmaz', 'Atlas', '6766494269');
 
 -- --------------------------------------------------------
@@ -295,13 +298,13 @@ ALTER TABLE `order`
 --
 ALTER TABLE `orderline`
   ADD CONSTRAINT `orderline_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `order` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `orderline_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `product` (`ProductID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `orderline_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `user`
+-- Constraints for table `product`
 --
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`RoleID`) REFERENCES `role` (`RoleID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `product`
+  ADD CONSTRAINT `category_id_product` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `users_groups`
