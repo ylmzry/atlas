@@ -10,7 +10,6 @@ class ProductsModel extends CI_Model{
   }
   // Get all Products form Database with all fields
   public function get_all_products() {
-    //$query = $this->db->get('product');
 		$query = $this->db->query('SELECT *, categories.name as cat_name, product.name as p_name FROM product LEFT OUTER JOIN categories ON product.category_id = categories.id');
     return $query->result_array();
   }
@@ -36,12 +35,6 @@ class ProductsModel extends CI_Model{
 
   //Add New Product
   public function add_product() {
-    /*
-    if (count($this->get_all_product_categories()) === 0) {
-      redirect('/category/add');
-    }
-     */
-
     $this->load->helper('url');
     $newproduct = array(
       'Name' => $this->input->post('pname'),
@@ -63,12 +56,11 @@ class ProductsModel extends CI_Model{
     return $this->db->update('product', $product);
 
     if ($id === 0) {
-      //return $this->db->insert('news', $data);
+      return false;
     } else {
       $this->db->where('id', $id);
       return $this->db->update('product', $product);
     }
-
   }
 
   public function delete_product($id) {

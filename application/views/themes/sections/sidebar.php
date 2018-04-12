@@ -26,6 +26,21 @@
           </li>
         </ul>
       </li>
+      <li>
+        <a href="javascript:;"><span class="title">CATEGORIES</span>
+        <span class=" arrow"></span></a>
+        <span class="icon-thumbnail"><i data-feather="triangle"></i></span>
+        <ul class="sub-menu">
+          <li class="">
+            <a href="<?php echo base_url(); ?>/index.php/category">All Categories</a>
+            <span class="icon-thumbnail">c</span>
+          </li>
+          <li class="">
+            <a href="<?php echo base_url(); ?>/index.php/category/add">Add new Category</a>
+            <span class="icon-thumbnail">t</span>
+          </li>
+        </ul>
+      </li>
     </ul>
     <div class="clearfix"></div>
   </div>

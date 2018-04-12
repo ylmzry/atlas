@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Products extends CI_Controller{
+class Category extends CI_Controller{
 
   public function __construct() {
       parent::__construct();
@@ -64,60 +64,61 @@ class Products extends CI_Controller{
       $this->load->section('quickview', 'themes/sections/quickview');
       $this->load->section('overlay', 'themes/sections/overlay');
 
-      $this->load->model('ProductsModel', 'ProductsModel');
+      $this->load->model('CategoryModel', 'CategoryModel');
     }
     function index()  {
-      $data['all_products']= $this->ProductsModel->get_all_products();
-      $data['page_title'] = "Products";
-  		$this->load->view('main/products/products',$data);
+      $data['all_categories']= $this->CategoryModel->get_all_categories();
+      $data['page_title'] = "Categories";
+  		$this->load->view('main/categories/categories',$data);
     }
 
   public function view($id) {
-      $data['product'] = $this->ProductsModel->get_product($id);
-      $this->load->view('main/products/single-product', $data);
+      $data['category'] = $this->CategoryModel->get_category($id);
+      $this->load->view('main/categories/single-category', $data);
   }
+
   public function add() {
       $this->load->helper('form');
       $this->load->library('form_validation');
 
-      $dataform['page_title'] = "Add new Product";
-      $dataform['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
+      $dataform['page_title'] = "Add new Category";
+      //$dataform['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
       $datasuccess['page_title'] = "Succesfully Added";
 
-      $this->form_validation->set_rules('pname', 'Product Name', 'required');
+      $this->form_validation->set_rules('cname', 'Category Name', 'required');
 
       if ($this->form_validation->run() === FALSE) {
-        $this->load->view('main/products/add-product', $dataform);
+        $this->load->view('main/categories/add-category', $dataform);
       } else {
-        $this->ProductsModel->add_product();
-        $this->load->view('main/products/add-product-success', $datasuccess);
+        $this->CategoryModel->add_category();
+        $this->load->view('main/categories/add-category-success', $datasuccess);
       }
   }
 
   public function edit($id) {
-    $data['product'] = $this->ProductsModel->get_product($id);
+    $data['category'] = $this->CategoryModel->get_category($id);
     $this->load->helper('form');
     $this->load->library('form_validation');
 
-    $data['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
-    $data['page_title'] = "Edit Product";
+    //$data['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
+    $data['page_title'] = "Edit Category";
 
-    $datasuccess['page_title'] = "Changes succesfully Saved";
-    $this->form_validation->set_rules('pname', 'Product Name', 'required');
+    $datasuccess['page_title'] = "Changes on category succesfully Saved";
+    $this->form_validation->set_rules('cname', 'Category Name', 'required');
 
       if ($this->form_validation->run() === FALSE) {
-          $this->load->view('main/products/edit-product', $data);
+          $this->load->view('main/categories/edit-category', $data);
       } else {
-        $this->ProductsModel->edit_product($id);
-        $this->load->view('main/products/edit-product-success', $datasuccess);
+        $this->CategoryModel->edit_category($id);
+        $this->load->view('main/categories/edit-category-success', $datasuccess);
       }
 
   }
 
   public function delete($id) {
-    $data['product'] = $this->ProductsModel->get_product($id);
-    $this->ProductsModel->delete_product($id);
-    //$data['deletesuccess'] = "Product Succesfully deleted";
-    redirect( base_url() . 'index.php/products/products');
+    $data['product'] = $this->CategoryModel->get_category($id);
+    $this->CategoryModel->delete_category($id);
+    redirect( base_url() . 'index.php/category');
   }
+
 }
