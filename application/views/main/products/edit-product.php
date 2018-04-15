@@ -12,7 +12,7 @@
             </ul>
             <!-- END BREADCRUMB -->
             <h3 class="page-title"><?php echo $page_title; ?></h3>
-
+            <?php var_dump($product); ?>
           </div>
           <div class=" container-fluid   container-fixed-lg">
 						<div class="row">
@@ -22,8 +22,6 @@
                   <div class="card-header ">
                     <div class="card-title">
                       <h4><?php echo $product['name']; ?></h4>
-
-
                     </div>
                   </div>
 
@@ -39,13 +37,19 @@
                         <?php if(!empty($all_products_categories)) { ?>
                             <select class="full-width select2-hidden-accessible" data-placeholder="SELECT A PRODUCT CATEGORY" data-init-plugin="select2" tabindex="-1" aria-hidden="true" name="pcat">
                               <?php foreach ($all_products_categories as $category) {
+                                if ($cat['category_id']==$product['category_id']) {
+                                  echo "<option value='" . $cat['category_id'] . "' selected>" .  $cat['name'] . "</option>";
+                                } else {
+                                  echo "<option value='" . $cat['category_id'] . "'>" .  $cat['name'] . "</option>";
+                                }
+                                /*
                                   foreach ($category as $cat) {
                                     if ($cat==$product['Category']) {
                                       echo "<option value='" . $cat . "' selected>" . $cat . "</option>";
                                     } else {
                                       echo "<option value='" . $cat . "'>" . $cat . "</option>";
                                     }
-                                  }
+                                  } */
                               } ?>
                             </select>
                         <?php } ?>

@@ -29,7 +29,7 @@ class ProductsModel extends CI_Model{
 
   //Get All Product Categories from Database
   public function get_all_product_categories() {
-    $query = $this->db->query('SELECT DISTINCT category_id FROM product');
+    $query = $this->db->query('SELECT id, name FROM categories');
     return $query->result_array();
   }
 
@@ -37,9 +37,9 @@ class ProductsModel extends CI_Model{
   public function add_product() {
     $this->load->helper('url');
     $newproduct = array(
-      'Name' => $this->input->post('pname'),
-      'Category' => $this->input->post('pcat'),
-      'Price' => $this->input->post('pprice')
+      'name' => $this->input->post('pname'),
+      'category_id' => $this->input->post('pcat'),
+      'price' => $this->input->post('pprice')
     );
     return $this->db->insert('product', $newproduct);
   }

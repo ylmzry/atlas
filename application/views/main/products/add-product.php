@@ -21,7 +21,7 @@
                   <div class="card-header ">
                     <div class="card-title">
                       <?php echo $page_title; ?>
-                      <?php //var_dump($all_products_categories); ?>
+                      <?php var_dump($all_products_categories); ?>
 
                     </div>
                   </div>
@@ -39,9 +39,7 @@
                             <select class="full-width select2-hidden-accessible" data-placeholder="SELECT A PRODUCT CATEGORY" data-init-plugin="select2" tabindex="-1" aria-hidden="true" name="pcat">
                               <?php
                               foreach ($all_products_categories as $category) {
-                                  foreach ($category as $cat) {
-                                    echo '<option value="' . $cat . '">' . $cat . "</option>";
-                                  }
+                                  echo '<option value="' . $category['id'] . '">' . $category['name'] . "</option>";
                               } ?>
                             </select>
                         <?php } ?>
