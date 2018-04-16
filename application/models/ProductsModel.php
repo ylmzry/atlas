@@ -18,11 +18,10 @@ class ProductsModel extends CI_Model{
   public function get_product($id = 0)  {
     if ($id===0) {
       //$query = $this->db->get('product');
-
       $query = $this->db->query('SELECT * FROM product LEFT OUTER JOIN categories ON product.id = categories.id');
       return $query->result_array();
     } else {
-      $query = $this->db->get_where('product', array('id'=>$id));
+      $query = $this->db->query('SELECT *, categories.name as cat_name, product.name as p_name FROM product LEFT OUTER JOIN categories ON product.category_id = categories.id');
       return $query->row_array();
     }
   }
@@ -48,9 +47,9 @@ class ProductsModel extends CI_Model{
   public function edit_product($id) {
     $this->load->helper('url');
     $product = array(
-      'Name' => $this->input->post('pname'),
-      'Category' => $this->input->post('pcat'),
-      'Price' => $this->input->post('pprice')
+      'name' => $this->input->post('pname'),
+      'category_id' => $this->input->post('pcat'),
+      'price' => $this->input->post('pprice')
     );
     $this->db->where('id', $id);
     return $this->db->update('product', $product);

@@ -7,20 +7,21 @@
               </li>
               <li class="breadcrumb-item active">Products
               </li>
-							<li class="breadcrumb-item active"><?php echo $product['Name']; ?>
+							<li class="breadcrumb-item active"><?php echo $product['p_name']; ?>
               </li>
             </ul>
             <!-- END BREADCRUMB -->
-            <h3 class="page-title"><?php echo $product['Name']; ?></h3>
+					
+            <h3 class="page-title"><?php //echo $product['p_name']; ?></h3>
           </div>
           <div class=" container-fluid   container-fixed-lg">
 						<div class="row">
 								<div class="col-xs-12 col-lg-2 col-md-3">Product Category</div>
-								<div class="col-xs-12 col-lg-10 col-md-9"><?php echo $product['Category']; ?></div>
+								<div class="col-xs-12 col-lg-10 col-md-9"><?php echo $product['cat_name']; ?></div>
 						</div>
 						<div class="row">
 								<div class="col-xs-12 col-lg-2 col-md-3">Product Price</div>
-								<div class="col-xs-12 col-lg-10 col-md-9">EUR <?php echo number_format($product['Price'],2); ?></div>
+								<div class="col-xs-12 col-lg-10 col-md-9">EUR <?php echo number_format($product['price'],2); ?></div>
 						</div>
           </div>
         </div>

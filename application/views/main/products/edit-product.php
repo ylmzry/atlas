@@ -22,6 +22,9 @@
                   <div class="card-header ">
                     <div class="card-title">
                       <h4><?php echo $product['name']; ?></h4>
+											<?php //var_dump($all_products_categories) ?><br>
+												<?php //var_dump($product) ?>
+
                     </div>
                   </div>
 
@@ -31,33 +34,30 @@
                         <label for="pname">Product Name</label>
                         <input type="text" class="form-control" required="" name="pname" value="<?php echo $product['name']; ?>">
                       </div>
+
                       <div class="form-group form-group-default form-group-default-select2 required">
                         <label class="">Product Category</label>
 
                         <?php if(!empty($all_products_categories)) { ?>
+
                             <select class="full-width select2-hidden-accessible" data-placeholder="SELECT A PRODUCT CATEGORY" data-init-plugin="select2" tabindex="-1" aria-hidden="true" name="pcat">
-                              <?php foreach ($all_products_categories as $category) {
-                                if ($cat['category_id']==$product['category_id']) {
-                                  echo "<option value='" . $cat['category_id'] . "' selected>" .  $cat['name'] . "</option>";
-                                } else {
-                                  echo "<option value='" . $cat['category_id'] . "'>" .  $cat['name'] . "</option>";
-                                }
-                                /*
-                                  foreach ($category as $cat) {
-                                    if ($cat==$product['Category']) {
-                                      echo "<option value='" . $cat . "' selected>" . $cat . "</option>";
-                                    } else {
-                                      echo "<option value='" . $cat . "'>" . $cat . "</option>";
-                                    }
-                                  } */
-                              } ?>
+                              <?php
+															foreach ($all_products_categories as $category) {
+																	  if ( $category['id']==$product['category_id']) {
+																				echo '<option selected value="' . $category['id'] . '">' . $category['name'] . "</option>";
+																		} else {
+																	echo '<option value="' . $category['id'] . '">' . $category['name'] . "</option>";
+																	}
+															}
+
+                               ?>
                             </select>
                         <?php } ?>
                         </select>
                       </div>
                       <div class="form-group form-group-default required ">
                         <label>Product Price</label>
-                        <input type="text" class="form-control" required="" name="pprice" value="<?php echo number_format($product['price'],2); ?>">
+                        <input type="textarea" class="form-control" required="" name="pprice" value="<?php echo number_format($product['price'],2); ?>">
                       </div>
                       <button class="btn btn-primary" type="submit">Save Changes</button>
                       <button class="btn btn-secondary">Return to Product</button>

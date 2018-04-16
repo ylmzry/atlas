@@ -4,7 +4,7 @@
             <ul class="breadcrumb p-l-0">
               <li class="breadcrumb-item"><a href="/">Home</a>
               </li>
-              <li class="breadcrumb-item active">Products
+              <li class="breadcrumb-item active">Categories
               </li>
             </ul>
 						<?php //var_dump($all_categories); ?>
@@ -27,6 +27,8 @@
 								echo "<td>" . $category['description'] . "</td>";
 						    echo "<td>
                       <div class='btn-group'>
+													<a type='button' class='btn btn-success' href='" .
+													site_url('category/view/'.$category['id']) . "'><i class='fa fa-eye'></i></a>
                           <a type='button' class='btn btn-success' href='" .
                           site_url('category/edit/'.$category['id']) . "'><i class='fa fa-pencil'></i></a>
                           <a type='button' class='btn btn-success' href='" .

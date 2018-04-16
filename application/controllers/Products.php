@@ -109,7 +109,7 @@ class Products extends CI_Controller{
           $this->load->view('main/products/edit-product', $data);
       } else {
         $this->ProductsModel->edit_product($id);
-        $this->load->view('main/products/edit-product-success', $datasuccess);
+        $this->load->view('main/products/edit-product-success', $datasuccess, $data);
       }
 
   }

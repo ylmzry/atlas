@@ -28,7 +28,8 @@
                   </div>
 
                   <div class="card-block">
-                      <button class="btn btn-primary" type="submit">View Product</button>
+										
+                      <button class="btn btn-primary" type="submit">View Category</button>
                   </div>
                 </div>
 

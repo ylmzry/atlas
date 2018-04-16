@@ -5,7 +5,7 @@
 						<ul class="breadcrumb p-l-0">
               <li class="breadcrumb-item"><a href="#">Home</a>
               </li>
-              <li class="breadcrumb-item active">Products
+              <li class="breadcrumb-item active">Categories
               </li>
 							<li class="breadcrumb-item active"><?php echo $page_title; ?>
               </li>

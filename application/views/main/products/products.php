@@ -7,7 +7,7 @@
               <li class="breadcrumb-item active">Products
               </li>
             </ul>
-						<?php var_dump($all_products); ?>
+						<?php //var_dump($all_products); ?>
             <!-- END BREADCRUMB -->
             <h3 class="page-title">Products</h3>
           </div>
@@ -31,7 +31,8 @@
 								echo "<td>EUR " . number_format($product['price'],2) . "</td>";
                 echo "<td>
                       <div class='btn-group'>
-                          <button type='button' class='btn btn-success'><i class='fa fa-save'></i></button>
+												<a type='button' class='btn btn-success' href='" .
+												site_url('products/view/'.$product['id']) . "'><i class='fa fa-eye'></i></a>
                           <a type='button' class='btn btn-success' href='" .
                           site_url('products/edit/'.$product['id']) . "'><i class='fa fa-pencil'></i></a>
                           <a type='button' class='btn btn-success' href='" .

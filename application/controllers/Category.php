@@ -110,13 +110,13 @@ class Category extends CI_Controller{
           $this->load->view('main/categories/edit-category', $data);
       } else {
         $this->CategoryModel->edit_category($id);
-        $this->load->view('main/categories/edit-category-success', $datasuccess);
+        $this->load->view('main/categories/edit-category-success', $datasuccess, $data);
       }
 
   }
 
   public function delete($id) {
-    $data['product'] = $this->CategoryModel->get_category($id);
+    $data['category'] = $this->CategoryModel->get_category($id);
     $this->CategoryModel->delete_category($id);
     redirect( base_url() . 'index.php/category');
   }
