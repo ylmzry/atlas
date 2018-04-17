@@ -32,7 +32,7 @@
                     <?php echo form_open('products/edit/' . $product['id']); ?>
                       <div class="form-group form-group-default required ">
                         <label for="pname">Product Name</label>
-                        <input type="text" class="form-control" required="" name="pname" value="<?php echo $product['name']; ?>">
+                        <input type="text" class="form-control" required="" name="pname" value="<?php echo $product['p_name']; ?>">
                       </div>
 
                       <div class="form-group form-group-default form-group-default-select2 required">

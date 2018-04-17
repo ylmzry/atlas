@@ -7,7 +7,7 @@
               <li class="breadcrumb-item active">Products
               </li>
             </ul>
-						<?php //var_dump($all_products); ?>
+						<?php var_dump($all_products); ?>
             <!-- END BREADCRUMB -->
             <h3 class="page-title">Products</h3>
           </div>
@@ -32,11 +32,11 @@
                 echo "<td>
                       <div class='btn-group'>
 												<a type='button' class='btn btn-success' href='" .
-												site_url('products/view/'.$product['id']) . "'><i class='fa fa-eye'></i></a>
+												site_url('products/view/'.$product['p_id']) . "'><i class='fa fa-eye'></i></a>
                           <a type='button' class='btn btn-success' href='" .
-                          site_url('products/edit/'.$product['id']) . "'><i class='fa fa-pencil'></i></a>
+                          site_url('products/edit/'.$product['p_id']) . "'><i class='fa fa-pencil'></i></a>
                           <a type='button' class='btn btn-success' href='" .
-                          site_url('products/delete/'.$product['id']) . "'><i class='fa fa-trash-o'></i></a>
+                          site_url('products/delete/'.$product['p_id']) . "'><i class='fa fa-trash-o'></i></a>
                         </div>
                       </td>";
 								echo "</tr>";

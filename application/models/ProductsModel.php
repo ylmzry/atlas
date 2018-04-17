@@ -10,7 +10,7 @@ class ProductsModel extends CI_Model{
   }
   // Get all Products form Database with all fields
   public function get_all_products() {
-		$query = $this->db->query('SELECT *, categories.name as cat_name, product.name as p_name FROM product LEFT OUTER JOIN categories ON product.category_id = categories.id');
+		$query = $this->db->query('SELECT *, product.id as p_id, categories.name as cat_name, product.name as p_name FROM product LEFT OUTER JOIN categories ON product.category_id = categories.id');
     return $query->result_array();
   }
 
