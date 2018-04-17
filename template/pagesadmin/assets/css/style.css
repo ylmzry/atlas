@@ -61,3 +61,7 @@ input[type=text], input[type=email], input[type=password] {
 .auth-wide  .login-container {
   width: auto !important;
 }
+
+.page-sidebar .sidebar-menu .menu-items li > a {
+    width: 77% !important;
+}

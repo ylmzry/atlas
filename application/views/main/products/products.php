@@ -7,7 +7,7 @@
               <li class="breadcrumb-item active">Products
               </li>
             </ul>
-						<?php var_dump($all_products); ?>
+						<?php //var_dump($all_products); ?>
             <!-- END BREADCRUMB -->
             <h3 class="page-title">Products</h3>
           </div>
@@ -19,7 +19,7 @@
 									<th>Name</th>
 									<th>Category</th>
 									<th>Price</th>
-                  <th>Action</th>
+                  <th></th>
 								</tr>
 							</thead>
 							<tbody>

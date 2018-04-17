@@ -21,11 +21,8 @@
 
                   <div class="card-header ">
                     <div class="card-title">
-                      <h4><?php echo $product['name']; ?></h4>
-											<?php //var_dump($all_products_categories) ?><br>
-												<?php //var_dump($product) ?>
-
-                    </div>
+                      <h4><?php echo $product['p_name']; ?></h4>
+									 </div>
                   </div>
 
                   <div class="card-block">
@@ -42,13 +39,19 @@
 
                             <select class="full-width select2-hidden-accessible" data-placeholder="SELECT A PRODUCT CATEGORY" data-init-plugin="select2" tabindex="-1" aria-hidden="true" name="pcat">
                               <?php
-															foreach ($all_products_categories as $category) {
+                              if ($product['category_id'] != "") {
+                                  foreach ($all_products_categories as $category) {
 																	  if ( $category['id']==$product['category_id']) {
 																				echo '<option selected value="' . $category['id'] . '">' . $category['name'] . "</option>";
 																		} else {
-																	echo '<option value="' . $category['id'] . '">' . $category['name'] . "</option>";
-																	}
-															}
+																	      echo '<option value="' . $category['id'] . '">' . $category['name'] . "</option>";
+																	 }
+														      }
+                              } else {
+                                foreach ($all_products_categories as $category) {
+                                    echo '<option value="' . $category['id'] . '">' . $category['name'] . "</option>";
+                                  }
+                                }
 
                                ?>
                             </select>

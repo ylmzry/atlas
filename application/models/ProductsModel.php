@@ -21,7 +21,7 @@ class ProductsModel extends CI_Model{
       $query = $this->db->query('SELECT * FROM product LEFT OUTER JOIN categories ON product.id = categories.id');
       return $query->result_array();
     } else {
-      $query = $this->db->query('SELECT *, categories.name as cat_name, product.name as p_name FROM product LEFT OUTER JOIN categories ON product.category_id = categories.id');
+      $query = $this->db->query('SELECT *, product.id as p_id, categories.name as cat_name, product.name as p_name FROM product LEFT OUTER JOIN categories ON product.category_id = categories.id WHERE product.id=' . $id );
       return $query->row_array();
     }
   }
