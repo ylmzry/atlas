@@ -36,7 +36,7 @@
                           <a type='button' class='btn btn-success' href='" .
                           site_url('products/edit/'.$product['p_id']) . "'><i class='fa fa-pencil'></i></a>
                           <a type='button' class='btn btn-success' href='" .
-                          site_url('products/delete/'.$product['p_id']) . "'><i class='fa fa-trash-o'></i></a>
+                          site_url('products/delete/'.$product['p_id']) . "' onclick=\"if (confirm('Are you sure you want to delete?')) return true; else return false;\"><i class='fa fa-trash-o'></i></a>
                         </div>
                       </td>";
 								echo "</tr>";
