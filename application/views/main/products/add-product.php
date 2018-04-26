@@ -21,12 +21,21 @@
                   <div class="card-header ">
                     <div class="card-title">
                       <?php echo $page_title; ?>
-                      <?php var_dump($all_products_categories); ?>
+                      <?php //var_dump($all_products_categories); ?>
 
                     </div>
                   </div>
 
                   <div class="card-block">
+                    <!-- Start Form Validation Errors -->
+                    <?php if(validation_errors()) { ?>
+                      <div class="alert alert-danger" role="alert">
+                        <button class="close" data-dismiss="alert"></button>
+                        <?php echo validation_errors(); ?>
+                      </div>
+                    <?php } ?>
+                    <!-- End Form Validation Errors -->
+
                     <?php echo form_open('products/add'); ?>
                     <?php // <form class="" role="form" action=""> ?>
                       <div class="form-group form-group-default required ">
@@ -34,7 +43,7 @@
                         <input type="text" class="form-control" required="" name="pname">
                       </div>
                       <div class="form-group form-group-default form-group-default-select2 required">
-                        <label class="">Product Category</label>
+                        <label for="pcat" class="">Product Category</label>
                         <?php if(!empty($all_products_categories)) { ?>
                             <select class="full-width select2-hidden-accessible" data-placeholder="SELECT A PRODUCT CATEGORY" data-init-plugin="select2" tabindex="-1" aria-hidden="true" name="pcat">
                               <?php
@@ -46,7 +55,7 @@
                         </select>
                       </div>
                       <div class="form-group form-group-default required ">
-                        <label>Product Price</label>
+                        <label for="pprice">Product Price</label>
                         <input type="text" class="form-control" required="" name="pprice">
                       </div>
                       <button class="btn btn-primary" type="submit">Add Product</button>

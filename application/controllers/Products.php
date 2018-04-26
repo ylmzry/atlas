@@ -77,15 +77,33 @@ class Products extends CI_Controller{
       $this->load->view('main/products/single-product', $data);
   }
   public function add() {
-      $this->load->helper('form');
+      $this->load->helper(array('form', 'url'));
       $this->load->library('form_validation');
 
       $dataform['page_title'] = "Add new Product";
       $dataform['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
       $datasuccess['page_title'] = "Succesfully Added";
 
-      $this->form_validation->set_rules('pname', 'Product Name', 'required');
+      $this->form_validation->set_rules(
+          'pname', 'Product Name', 'required|alpha_numeric_spaces',
+           array(
+             'required'=>'Product Name is empty.',
+             'alpha_numeric_spaces'=>'Product Name contains something other than alpha-numeric characters or spaces.',
+           )
+      );
 
+      $this->form_validation->set_rules('pcat', 'Product Category', 'required',
+          array(
+            ' required'      => 'Product Category is empty.',
+          )
+        );
+
+      $this->form_validation->set_rules('pprice', 'Product Price', 'required|decimal',
+        array(
+          'required'      => 'Product Name is empty.',
+          'decimal'     => 'Product Price contains anything other than a decimal number.',
+        )
+      );
       if ($this->form_validation->run() === FALSE) {
         $this->load->view('main/products/add-product', $dataform);
       } else {
@@ -95,15 +113,33 @@ class Products extends CI_Controller{
   }
 
   public function edit($id) {
-    $data['product'] = $this->ProductsModel->get_product($id);
-    $this->load->helper('form');
+    $this->load->helper(array('form', 'url'));
     $this->load->library('form_validation');
 
+    $data['product'] = $this->ProductsModel->get_product($id);
     $data['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
     $data['page_title'] = "Edit Product";
 
     $datasuccess['page_title'] = "Changes succesfully Saved";
-    $this->form_validation->set_rules('pname', 'Product Name', 'required');
+
+    $this->form_validation->set_rules(
+        'pname', 'Product Name', 'required|alpha_numeric_spaces',
+         array(
+           'required'=>'Product Name is empty.',
+           'alpha_numeric_spaces'=>'Product Name contains something other than alpha-numeric characters or spaces.',
+         )
+    );
+    $this->form_validation->set_rules('pcat', 'Product Category', 'required',
+        array(
+          ' required'      => 'Product Category is empty.',
+        )
+      );
+    $this->form_validation->set_rules('pprice', 'Product Price', 'required|alpha_numeric_spaces',
+      array(
+        'required'      => 'Product Name is empty.',
+        'decimal'     => 'Product Price contains something other than alpha-numeric characters or spaces.',
+      )
+    );
 
       if ($this->form_validation->run() === FALSE) {
           $this->load->view('main/products/edit-product', $data);
@@ -118,6 +154,6 @@ class Products extends CI_Controller{
     $data['product'] = $this->ProductsModel->get_product($id);
     $this->ProductsModel->delete_product($id);
     //$data['deletesuccess'] = "Product Succesfully deleted";
-    redirect( base_url() . 'index.php/products/products');
+    redirect( base_url() . 'index.php/products');
   }
 }

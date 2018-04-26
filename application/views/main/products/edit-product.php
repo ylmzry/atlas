@@ -12,7 +12,7 @@
             </ul>
             <!-- END BREADCRUMB -->
             <h3 class="page-title"><?php echo $page_title; ?></h3>
-            <?php var_dump($product); ?>
+
           </div>
           <div class=" container-fluid   container-fixed-lg">
 						<div class="row">
@@ -22,10 +22,20 @@
                   <div class="card-header ">
                     <div class="card-title">
                       <h4><?php echo $product['p_name']; ?></h4>
+                      <?php echo var_dump($product); ?>
 									 </div>
                   </div>
 
                   <div class="card-block">
+                    <!-- Start Form Validation Errors -->
+                    <?php if(validation_errors()) { ?>
+                      <div class="alert alert-danger" role="alert">
+                        <button class="close" data-dismiss="alert"></button>
+                        <?php echo validation_errors(); ?>
+                      </div>
+                    <?php } ?>
+                    <!-- End Form Validation Errors -->
+
                     <?php echo form_open('products/edit/' . $product['id']); ?>
                       <div class="form-group form-group-default required ">
                         <label for="pname">Product Name</label>
@@ -33,7 +43,7 @@
                       </div>
 
                       <div class="form-group form-group-default form-group-default-select2 required">
-                        <label class="">Product Category</label>
+                        <label for="pcat" class="">Product Category</label>
 
                         <?php if(!empty($all_products_categories)) { ?>
 
@@ -59,8 +69,9 @@
                         </select>
                       </div>
                       <div class="form-group form-group-default required ">
-                        <label>Product Price</label>
-                        <input type="textarea" class="form-control" required="" name="pprice" value="<?php echo number_format($product['price'],2); ?>">
+                        <label for="price">Product Price</label>
+                        <!--<input type="textarea" class="form-control" required="" name="pprice" value="<?php echo number_format($product['price'],2); ?>">-->
+                        <input type="textarea" class="form-control" required="" name="pprice" value="<?php echo $product['price']; ?>">
                       </div>
                       <button class="btn btn-primary" type="submit">Save Changes</button>
                       <button class="btn btn-secondary">Return to Product</button>
