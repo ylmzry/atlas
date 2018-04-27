@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 17, 2018 at 10:14 PM
+-- Generation Time: Apr 27, 2018 at 09:31 AM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `name` varchar(100) NOT NULL,
   `description` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `categories`
@@ -82,7 +82,17 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `Address3` varchar(200) NOT NULL,
   `RegistrationDate` date NOT NULL,
   PRIMARY KEY (`CustomerID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`CustomerID`, `Name`, `Surname`, `Company`, `Logo`, `Email`, `Tel`, `Tel2`, `Fax`, `Address`, `Address2`, `Address3`, `RegistrationDate`) VALUES
+(1, 'WIFI', 'WIFI ', 'WIFI', '', 'wifi@wifi.at', '1234567', '12345678', '1234567', 'Adresse', 'Adresse LIne 2', 'ADressen Line 3', '2018-04-24'),
+(2, 'Steve', 'Jobs', 'Apple', '', '', '', '', '', '', '', '', '0000-00-00'),
+(3, 'Steve', 'Jobs', 'Apple', '', '', '', '', '', '', '', '', '0000-00-00'),
+(4, 'Steve', 'Jobs', 'Apple', '', '', '', '', '', '', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -119,14 +129,7 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `login_attempts`
---
-
-INSERT INTO `login_attempts` (`id`, `ip_address`, `login`, `time`) VALUES
-(1, '::1', 'adminasd', 1523803426);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -192,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `price` decimal(10,0) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
@@ -201,7 +204,8 @@ CREATE TABLE IF NOT EXISTS `product` (
 INSERT INTO `product` (`id`, `name`, `category_id`, `price`) VALUES
 (3, '3', 2, '120'),
 (4, 'Test Product 3', 2, '12345'),
-(5, 'adfaf', NULL, '12');
+(5, 'adfaf', NULL, '12'),
+(6, 'asdasd', 2, '123');
 
 -- --------------------------------------------------------
 
@@ -256,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$08$lSKMVeYM7WKOg9UHdIfuE.h7UvcbQQ4B/gxH6rEG4gcG9OsIJ92G6', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1523803433, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', '$2y$08$lSKMVeYM7WKOg9UHdIfuE.h7UvcbQQ4B/gxH6rEG4gcG9OsIJ92G6', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1524776104, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '::1', 'erayyilmaz@outlook.com', '$2y$08$NEsymqNhsU13SoI0mwqfIuEP6wUs05vgvgRfTfPfeprY3k8l.Vuxq', NULL, 'erayyilmaz@outlook.com', NULL, NULL, NULL, NULL, 1523196519, NULL, 1, 'Eray', 'Yilmaz', 'Atlas', '6766494269');
 
 -- --------------------------------------------------------
