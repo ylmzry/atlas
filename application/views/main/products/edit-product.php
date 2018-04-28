@@ -36,7 +36,7 @@
                     <?php } ?>
                     <!-- End Form Validation Errors -->
 
-                    <?php echo form_open('products/edit/' . $product['id']); ?>
+                    <?php echo form_open('products/edit/' . $product['p_id']); ?>
                       <div class="form-group form-group-default required ">
                         <label for="pname">Product Name</label>
                         <input type="text" class="form-control" required="" name="pname" value="<?php echo $product['p_name']; ?>">
