@@ -86,16 +86,44 @@ class Customers extends CI_Controller{
       $data['customer'] = $this->CustomersModel->get_customer($id);
       $this->load->view('main/customers/single-customer', $data);
   }
-
+ /**
+  * Adding new Customer
+  */
   public function add() {
       $this->load->helper('form');
       $this->load->library('form_validation');
 
       $dataform['page_title'] = "Add new Customer";
-      //$dataform['all_customers_categories'] = $this->CustomersModel->get_all_customer_categories();
       $datasuccess['page_title'] = "Succesfully Added";
 
-      $this->form_validation->set_rules('company', 'Customer Name', 'required');
+      $this->form_validation->set_rules(
+          'company', 'Company', 'required|alpha_numeric_spaces',
+           array(
+             'required'=>'Company is empty.',
+             'alpha_numeric_spaces'=>'Company contains something other than alpha-numeric characters or spaces.',
+           )
+      );
+      $this->form_validation->set_rules(
+          'name', 'Name', 'required|alpha_numeric_spaces',
+           array(
+             'required'=>'Name is empty.',
+             'alpha_numeric_spaces'=>'Name contains something other than alpha-numeric characters or spaces.',
+           )
+      );
+      $this->form_validation->set_rules(
+          'surname', 'Surname', 'required|alpha_numeric_spaces',
+           array(
+             'required'=>'Surname is empty.',
+             'alpha_numeric_spaces'=>'Surname contains something other than alpha-numeric characters or spaces.',
+           )
+      );
+      $this->form_validation->set_rules(
+          'email', 'E-Mail', 'required|valid_email',
+           array(
+             'required'=>'E-Mail is empty.',
+             'alpha_numeric_spaces'=>'E-Mail is not valid.',
+           )
+      );
 
       if ($this->form_validation->run() === FALSE) {
         $this->load->view('main/customers/add-customer', $dataform);
@@ -104,17 +132,74 @@ class Customers extends CI_Controller{
         $this->load->view('main/customers/add-customer-success', $datasuccess);
       }
   }
-  /*
+
   public function edit($id) {
-    $data['customer'] = $this->CustomersModel->get_customer($id);
     $this->load->helper('form');
     $this->load->library('form_validation');
 
-    $data['all_customers_categories'] = $this->CustomersModel->get_all_customer_categories();
-    $data['page_title'] = "Edit Product";
+    $data['customer'] = $this->CustomersModel->get_customer($id);
+    $data['page_title'] = "Edit Costumer";
 
     $datasuccess['page_title'] = "Changes succesfully Saved";
-    $this->form_validation->set_rules('pname', 'Product Name', 'required');
+
+    $this->form_validation->set_rules(
+        'company', 'Company', 'required|alpha_numeric_spaces',
+         array(
+           'required'=>'Company is empty.',
+           'alpha_numeric_spaces'=>'Company contains something other than alpha-numeric characters or spaces.',
+         )
+    );
+    $this->form_validation->set_rules(
+        'name', 'Name', 'required|alpha_numeric_spaces',
+         array(
+           'required'=>'Name is empty.',
+           'alpha_numeric_spaces'=>'Name contains something other than alpha-numeric characters or spaces.',
+         )
+    );
+    $this->form_validation->set_rules(
+        'surname', 'Surname', 'required|alpha_numeric_spaces',
+         array(
+           'required'=>'Surname is empty.',
+           'alpha_numeric_spaces'=>'Surname contains something other than alpha-numeric characters or spaces.',
+         )
+    );
+    $this->form_validation->set_rules(
+        'email', 'E-Mail', 'required|valid_email',
+         array(
+           'required'=>'E-Mail is empty.',
+           'alpha_numeric_spaces'=>'E-Mail is not valid.',
+         )
+    );
+    $this->form_validation->set_rules(
+        'tel', 'Tel', 'alpha_numeric_spaces',
+         array(
+            'alpha_numeric_spaces'=>'Tel contains something other than alpha-numeric characters or spaces.',
+         )
+    );
+    $this->form_validation->set_rules(
+        'fax', 'Fax', 'alpha_numeric_spaces',
+         array(
+           'alpha_numeric_spaces'=>'Fax contains something other than alpha-numeric characters or spaces.',
+         )
+    );
+    $this->form_validation->set_rules(
+        'address', 'Address', 'alpha_numeric_spaces',
+         array(
+           'alpha_numeric_spaces'=>'Address contains something other than alpha-numeric characters or spaces.',
+         )
+    );
+    $this->form_validation->set_rules(
+        'address2', 'Address2', 'alpha_numeric_spaces',
+         array(
+           'alpha_numeric_spaces'=>'Address Line 2 contains something other than alpha-numeric characters or spaces.',
+         )
+    );
+    $this->form_validation->set_rules(
+        'address3', 'Address3', 'alpha_numeric_spaces',
+         array(
+           'alpha_numeric_spaces'=>'Address Line 3 contains something other than alpha-numeric characters or spaces.',
+         )
+    );
 
       if ($this->form_validation->run() === FALSE) {
           $this->load->view('main/customers/edit-customer', $data);
@@ -124,7 +209,7 @@ class Customers extends CI_Controller{
       }
 
   }
-
+/*
   public function delete($id) {
     $data['customer'] = $this->CustomersModel->get_customer($id);
     $this->CustomersModel->delete_customer($id);

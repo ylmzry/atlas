@@ -43,7 +43,7 @@
             <a href="<?php echo base_url(); ?>index.php/customers">Customers</a>
           </li>
           <li class="">
-            <a href="<?php echo base_url(); ?>index.php/customers/add">Add new Product</a>
+            <a href="<?php echo base_url(); ?>index.php/customers/add">Add new Customer</a>
           </li>
         </ul>
       </li>

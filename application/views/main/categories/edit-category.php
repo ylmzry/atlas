@@ -26,6 +26,15 @@
                   </div>
 
                   <div class="card-block">
+                    <!-- Start Form Validation Errors -->
+                    <?php if(validation_errors()) { ?>
+                      <div class="alert alert-danger" role="alert">
+                        <button class="close" data-dismiss="alert"></button>
+                        <?php echo validation_errors(); ?>
+                      </div>
+                    <?php } ?>
+                    <!-- End Form Validation Errors -->
+
                     <?php echo form_open('category/edit/' . $category['id']); ?>
                       <div class="form-group form-group-default required ">
                         <label for="cname">Name</label>

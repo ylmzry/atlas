@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Products extends CI_Controller{
+class Order extends CI_Controller{
 
   public function __construct() {
       parent::__construct();
@@ -64,14 +64,15 @@ class Products extends CI_Controller{
       $this->load->section('quickview', 'themes/sections/quickview');
       $this->load->section('overlay', 'themes/sections/overlay');
 
-      $this->load->model('ProductsModel', 'ProductsModel');
-    }
-    function index()  {
-      $data['all_products']= $this->ProductsModel->get_all_products();
-      $data['page_title'] = "Products";
-  		$this->load->view('main/products/products',$data);
+      $this->load->model('OrdersModel', 'OrdersModel');
     }
 
+    function index()  {
+      $data['all_orders']= $this->OrdersModel->get_all_orders();
+      $data['page_title'] = "Orders";
+  		$this->load->view('main/orders/order', $data);
+    }
+ /*
   public function view($id) {
       $data['product'] = $this->ProductsModel->get_product($id);
       $this->load->view('main/products/single-product', $data);
@@ -154,5 +155,5 @@ class Products extends CI_Controller{
     $this->ProductsModel->delete_product($id);
     //$data['deletesuccess'] = "Product Succesfully deleted";
     redirect( base_url() . 'index.php/products');
-  }
+  } */
 }

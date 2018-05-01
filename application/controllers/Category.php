@@ -85,7 +85,21 @@ class Category extends CI_Controller{
       //$dataform['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
       $datasuccess['page_title'] = "Succesfully Added";
 
-      $this->form_validation->set_rules('cname', 'Category Name', 'required');
+      $this->form_validation->set_rules(
+          'cname', 'Category Name', 'required|alpha_numeric_spaces',
+           array(
+             'required'=>'Category Name is empty.',
+             'alpha_numeric_spaces'=>'Category Name contains something other than alpha-numeric characters or spaces.',
+           )
+      );
+
+      $this->form_validation->set_rules(
+          'cdesc', 'Category Description', 'required|alpha_numeric_spaces',
+           array(
+             'required'=>'Category Description is empty.',
+             'alpha_numeric_spaces'=>'Category Description contains something other than alpha-numeric characters or spaces.',
+           )
+      );
 
       if ($this->form_validation->run() === FALSE) {
         $this->load->view('main/categories/add-category', $dataform);
@@ -104,7 +118,22 @@ class Category extends CI_Controller{
     $data['page_title'] = "Edit Category";
 
     $datasuccess['page_title'] = "Changes on category succesfully Saved";
-    $this->form_validation->set_rules('cname', 'Category Name', 'required');
+
+    $this->form_validation->set_rules(
+        'cname', 'Category Name', 'required|alpha_numeric_spaces',
+         array(
+           'required'=>'Category Name is empty.',
+           'alpha_numeric_spaces'=>'Category Name contains something other than alpha-numeric characters or spaces.',
+         )
+    );
+
+    $this->form_validation->set_rules(
+      'cdesc', 'Category Description', 'required|alpha_numeric_spaces',
+       array(
+         'required'=>'Category Description is empty.',
+         'alpha_numeric_spaces'=>'Category Description contains something other than alpha-numeric characters or spaces.',
+       )
+    );
 
       if ($this->form_validation->run() === FALSE) {
           $this->load->view('main/categories/edit-category', $data);

@@ -5,7 +5,7 @@
 						<ul class="breadcrumb p-l-0">
               <li class="breadcrumb-item"><a href="#">Home</a>
               </li>
-              <li class="breadcrumb-item active">Categories
+              <li class="breadcrumb-item active">Products
               </li>
 							<li class="breadcrumb-item active"><?php echo $page_title; ?>
               </li>
@@ -18,19 +18,17 @@
               <div class="col-md-6 col-sm-12">
                 <div class="alert alert-success" role="alert">
                   <button class="close" data-dismiss="alert"></button>
-                  <strong>Success: </strong>Changes saved
+                  <strong>Success: </strong>Product added
                 </div>
               <div class="card card-default">
                   <div class="card-header ">
                     <div class="card-title">
-
+                      <?php echo $page_title; ?>
                     </div>
                   </div>
 
                   <div class="card-block">
-
-                      <a href="<?php site_url('category/view/'.$category['id']) ?>" class="btn btn-primary" type="submit">View Category</a>
-s
+                      <button class="btn btn-primary" type="submit">Add New Product</button>
                   </div>
                 </div>
 

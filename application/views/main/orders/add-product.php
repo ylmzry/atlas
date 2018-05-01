@@ -5,7 +5,7 @@
 						<ul class="breadcrumb p-l-0">
               <li class="breadcrumb-item"><a href="#">Home</a>
               </li>
-              <li class="breadcrumb-item active">All Categories
+              <li class="breadcrumb-item active">Products
               </li>
 							<li class="breadcrumb-item active"><?php echo $page_title; ?>
               </li>
@@ -21,6 +21,8 @@
                   <div class="card-header ">
                     <div class="card-title">
                       <?php echo $page_title; ?>
+                      <?php //var_dump($all_products_categories); ?>
+
                     </div>
                   </div>
 
@@ -33,18 +35,30 @@
                       </div>
                     <?php } ?>
                     <!-- End Form Validation Errors -->
-                    
-                    <?php echo form_open('category/add'); ?>
+
+                    <?php echo form_open('products/add'); ?>
                     <?php // <form class="" role="form" action=""> ?>
                       <div class="form-group form-group-default required ">
-                        <label for="cname">Category Name</label>
-                        <input type="text" class="form-control" required="" name="cname">
+                        <label for="pname">Product Name</label>
+                        <input type="text" class="form-control" required="" name="pname">
+                      </div>
+                      <div class="form-group form-group-default form-group-default-select2 required">
+                        <label for="pcat" class="">Product Category</label>
+                        <?php if(!empty($all_products_categories)) { ?>
+                            <select class="full-width select2-hidden-accessible" data-placeholder="SELECT A PRODUCT CATEGORY" data-init-plugin="select2" tabindex="-1" aria-hidden="true" name="pcat">
+                              <?php
+                              foreach ($all_products_categories as $category) {
+                                  echo '<option value="' . $category['id'] . '">' . $category['name'] . "</option>";
+                              } ?>
+                            </select>
+                        <?php } ?>
+                        </select>
                       </div>
                       <div class="form-group form-group-default required ">
-                        <label for="cname">Category Description</label>
-                        <input type="text-area" class="form-control" required="" name="cdesc">
+                        <label for="pprice">Product Price</label>
+                        <input type="text" class="form-control" required="" name="pprice">
                       </div>
-                      <button class="btn btn-primary" type="submit">Add Category</button>
+                      <button class="btn btn-primary" type="submit">Add Product</button>
                       <button class="btn btn-secondary" type="Reset">Reset</button>
                     </form>
 

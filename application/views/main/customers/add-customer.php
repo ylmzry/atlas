@@ -24,7 +24,7 @@
 
                     </div>
                   </div>
-                 
+
                   <div class="card-block">
                     <?php echo form_open('customers/add'); ?>
                     <?php // <form class="" role="form" action=""> ?>
@@ -46,23 +46,23 @@
                       </div>
                       <div class="form-group form-group-default">
                         <label for=tel>Tel</label>
-                        <input type="text" class="form-control" required="" name="tel">
+                        <input type="text" class="form-control" name="tel">
                       </div>
                       <div class="form-group form-group-default">
                         <label for=fax>Fax</label>
-                        <input type="text" class="form-control" required="" name="fax">
+                        <input type="text" class="form-control" name="fax">
                       </div>
                       <div class="form-group form-group-default">
                         <label for=address>Address</label>
-                        <input type="address" class="form-control" required="" name="address">
+                        <input type="address" class="form-control" name="address">
                       </div>
                       <div class="form-group form-group-default">
                         <label for=address2>Address Line 2</label>
-                        <input type="address" class="form-control" required="" name="address2">
+                        <input type="address" class="form-control" name="address2">
                       </div>
                       <div class="form-group form-group-default">
                         <label for=address3>Address Line 3</label>
-                        <input type="address" class="form-control" required="" name="address3">
+                        <input type="address" class="form-control" name="address3">
                       </div>
                       <div class="form-group form-group-default">
                         <label for="logo">LOGO</label>

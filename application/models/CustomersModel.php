@@ -40,30 +40,39 @@ class CustomersModel extends CI_Model{
     $newcustomer = array(
       'Company' => $this->input->post('company'),
       'Name' => $this->input->post('name'),
-      'surname' => $this->input->post('surname')
+      'Surname' => $this->input->post('surname')
     );
     return $this->db->insert('customer', $newcustomer);
   }
-  /*
+
   //Save Changes
   public function edit_customer($id) {
     $this->load->helper('url');
     $customer = array(
-      'name' => $this->input->post('pname'),
-      'category_id' => $this->input->post('pcat'),
-      'price' => $this->input->post('pprice')
+      'Company' => $this->input->post('company'),
+      'Name' => $this->input->post('name'),
+      'Surname' => $this->input->post('surname'),
+      'EMail' => $this->input->post('email'),
+      'Tel' => $this->input->post('tel'),
+      'Fax' => $this->input->post('fax'),
+      'Company' => $this->input->post('company'),
+      'Name' => $this->input->post('name'),
+      'Surname' => $this->input->post('surname'),
+      'Address' => $this->input->post('address'),
+      'Address2' => $this->input->post('address2'),
+      'Address3' => $this->input->post('address3'),
     );
-    $this->db->where('id', $id);
-    return $this->db->update('customer', $customer);
+    //$this->db->where('CustomerID', $id);
+    //return $this->db->update('customer', $customer);
 
     if ($id === 0) {
       return false;
     } else {
-      $this->db->where('id', $id);
+      $this->db->where('CustomerID', $id);
       return $this->db->update('customer', $customer);
     }
   }
-
+/*                                                                                             0                                                                                                                       0
   public function delete_customer($id) {
     $this->db->where('id', $id);
     return $this->db->delete('customer');
