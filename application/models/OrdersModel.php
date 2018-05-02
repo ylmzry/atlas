@@ -13,6 +13,12 @@ class OrdersModel extends CI_Model{
 		$query = $this->db->get('order');
     return $query->result_array();
   }
+
+  public function get_all_products() {
+    $query = $this->db->query('SELECT * FROM product');
+    return $query->result_array();
+  }
+
  /*
   // Get Product Informations by ID
   public function get_product($id = 0)  {

@@ -78,6 +78,9 @@ class Order extends CI_Controller{
 
 			$this->load->js('template/pagesadmin/assets/js/form_wizard.js');
 			$this->load->js('template/pagesadmin/assets/js/scripts.js');
+            
+            // OWN Scripts
+            $this->load->js('assets/themes/default/js/scripts.js');
 		
       $this->load->section('sidebar', 'themes/sections/sidebar');
 	    $this->load->section('header', 'themes/sections/header', $data);
@@ -106,6 +109,8 @@ class Order extends CI_Controller{
       //$dataform['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
       $datasuccess['page_title'] = "Succesfully Added";
 
+      $dataform['products'] = $this->OrdersModel->get_all_products();
+      
       $this->form_validation->set_rules(
           'pname', 'Product Name', 'required|alpha_numeric_spaces',
            array(
