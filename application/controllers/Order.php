@@ -78,10 +78,7 @@ class Order extends CI_Controller{
 
 			$this->load->js('template/pagesadmin/assets/js/form_wizard.js');
 			$this->load->js('template/pagesadmin/assets/js/scripts.js');
-			// AJAX LIbrary
-		 	$this->load->js('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
-
-
+		
       $this->load->section('sidebar', 'themes/sections/sidebar');
 	    $this->load->section('header', 'themes/sections/header', $data);
       $this->load->section('quickview', 'themes/sections/quickview');

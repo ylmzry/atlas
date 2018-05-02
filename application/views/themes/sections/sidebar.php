@@ -47,6 +47,16 @@
           </li>
         </ul>
       </li>
+			<li>
+        <a href="javascript:;"><span class="title">ORDERS</span>
+        <span class=" arrow"></span></a>
+        <ul class="sub-menu">
+
+          <li class="">
+            <a href="<?php echo base_url(); ?>index.php/order/add">Add news Order</a>
+          </li>
+        </ul>
+      </li>
     </ul>
     <div class="clearfix"></div>
   </div>
