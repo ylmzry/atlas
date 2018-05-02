@@ -17,14 +17,16 @@ class Order extends CI_Controller{
       $this->load->css('template/pagesadmin/assets/plugins/jquery-scrollbar/jquery.scrollbar.css');
       $this->load->css('template/pagesadmin/assets/plugins/select2/css/select2.min.css');
       $this->load->css('template/pagesadmin/assets/plugins/switchery/css/switchery.min.css');
-      $this->load->css('template/pagesadmin/assets/plugins/nvd3/nv.d3.min.css');
-      $this->load->css('template/pagesadmin/assets/plugins/rickshaw/rickshaw.min.css');
-      $this->load->css('template/pagesadmin/assets/plugins/bootstrap-datepicker/css/datepicker3.css');
-      $this->load->css('template/pagesadmin/assets/plugins/mapplic/css/mapplic.css');
-      $this->load->css('template/pagesadmin/assets/css/dashboard.widgets.css');
+      //$this->load->css('template/pagesadmin/assets/plugins/nvd3/nv.d3.min.css');
+      //$this->load->css('template/pagesadmin/assets/plugins/rickshaw/rickshaw.min.css');
+      //$this->load->css('template/pagesadmin/assets/plugins/bootstrap-datepicker/css/datepicker3.css');
+      //$this->load->css('template/pagesadmin/assets/plugins/mapplic/css/mapplic.css');
+      //$this->load->css('template/pagesadmin/assets/css/dashboard.widgets.css');
       $this->load->css('template/pagesadmin/assets/css/style.css');
       $this->load->css('template/pagesadmin/pages/css/pages-icons.css');
       $this->load->css('template/pagesadmin/pages/css/themes/light.css');
+
+
 
       $this->load->js('template/pagesadmin/assets/plugins/feather-icons/feather.min.js');
       $this->load->js('template/pagesadmin/assets/plugins/pace/pace.min.js');
@@ -41,6 +43,21 @@ class Order extends CI_Controller{
       $this->load->js('template/pagesadmin/assets/plugins/select2/js/select2.full.min.js');
       $this->load->js('template/pagesadmin/assets/plugins/classie/classie.js');
       $this->load->js('template/pagesadmin/assets/plugins/switchery/js/switchery.min.js');
+
+		  $this->load->js('template/pagesadmin/assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.all.min.js');
+			$this->load->js('template/pagesadmin/assets/plugins/jquery-autonumeric/autoNumeric.js');
+			$this->load->js('template/pagesadmin/assets/plugins/dropzone/dropzone.min.js');
+			$this->load->js('template/pagesadmin/assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js');
+			$this->load->js('template/pagesadmin/assets/plugins/jquery-inputmask/jquery.inputmask.min.js');
+			$this->load->js('template/pagesadmin/assets/plugins/bootstrap-form-wizard/js/jquery.bootstrap.wizard.min.js');
+			$this->load->js('template/pagesadmin/assets/plugins/jquery-validation/js/jquery.validate.min.js');
+			$this->load->js('template/pagesadmin/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js');
+			$this->load->js('template/pagesadmin/assets/plugins/summernote/js/summernote.min.js');
+			$this->load->js('template/pagesadmin/assets/plugins/moment/moment.min.js');
+			$this->load->js('template/pagesadmin/assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js');
+
+
+			/*
       $this->load->js('template/pagesadmin/assets/plugins/nvd3/lib/d3.v3.js');
       $this->load->js('template/pagesadmin/assets/plugins/nvd3/nv.d3.min.js');
       $this->load->js('template/pagesadmin/assets/plugins/nvd3/src/utils.js');
@@ -54,10 +71,16 @@ class Order extends CI_Controller{
       $this->load->js('template/pagesadmin/assets/plugins/mapplic/js/jquery.mousewheel.js');
       $this->load->js('template/pagesadmin/assets/plugins/mapplic/js/mapplic.js');
       $this->load->js('template/pagesadmin/assets/js/dashboard.js');
+			*/
 
       $this->load->js('template/pagesadmin/pages/js/pages.min.js');
-      $this->load->js('template/pagesadmin/assets/js/dashboard.js');
-      $this->load->js('template/pagesadmin/assets/js/scripts.js');
+      //$this->load->js('template/pagesadmin/assets/js/dashboard.js');
+
+			$this->load->js('template/pagesadmin/assets/js/form_wizard.js');
+			$this->load->js('template/pagesadmin/assets/js/scripts.js');
+			// AJAX LIbrary
+		 	$this->load->js('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+
 
       $this->load->section('sidebar', 'themes/sections/sidebar');
 	    $this->load->section('header', 'themes/sections/header', $data);
@@ -77,12 +100,13 @@ class Order extends CI_Controller{
       $data['product'] = $this->ProductsModel->get_product($id);
       $this->load->view('main/products/single-product', $data);
   }
+	*/
   public function add() {
       $this->load->helper(array('form', 'url'));
       $this->load->library('form_validation');
 
-      $dataform['page_title'] = "Add new Product";
-      $dataform['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
+      $dataform['page_title'] = "Add Order";
+      //$dataform['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
       $datasuccess['page_title'] = "Succesfully Added";
 
       $this->form_validation->set_rules(
@@ -92,26 +116,15 @@ class Order extends CI_Controller{
              'alpha_numeric_spaces'=>'Product Name contains something other than alpha-numeric characters or spaces.',
            )
       );
-      $this->form_validation->set_rules('pcat', 'Product Category', 'required',
-          array(
-            ' required'      => 'Product Category is empty.',
-          )
-        );
-      $this->form_validation->set_rules('pprice', 'Product Price', 'required|alpha_numeric_spaces',
-        array(
-          'required'      => 'Product Name is empty.',
-          'decimal'     => 'Product Price contains something other than alpha-numeric characters or spaces.',
-        )
-      );
 
       if ($this->form_validation->run() === FALSE) {
-        $this->load->view('main/products/add-product', $dataform);
+        $this->load->view('main/orders/add-order', $dataform);
       } else {
         $this->ProductsModel->add_product();
-        $this->load->view('main/products/add-product-success', $datasuccess);
+        $this->load->view('main/orders/add-order-success', $datasuccess);
       }
   }
-
+ 	/*
   public function edit($id) {
     $this->load->helper(array('form', 'url'));
     $this->load->library('form_validation');
