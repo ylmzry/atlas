@@ -83,7 +83,7 @@
 	                          </div>
 	                          <div class="col-md-2 text-right bg-primary padding-10">
 	                            <h5 class="font-montserrat all-caps small no-margin hint-text text-white bold">Total</h5>
-	                            <h4 class="no-margin text-white">$44</h4>
+	                            <h4 class="no-margin text-white sumofcart">$44</h4>
 	                          </div>
 	                        </div>
 	                      </div>

@@ -32,15 +32,18 @@
             var product_price = $product_selector.find('option:selected').data('price');
             var total_price = product_price * product_quantity;
             $product_total.text("$"+total_price);
+            var summofcart = $product_row.find(".summofcart");
+
         });
     });
 })(window.jQuery);
 
 function addNewOrderLine() {
-  var $order_line = document.getElementById("order-line");
+  //var $order_line = document.getElementById("order-line");
   //var $new_order_line = $order_line.clone(true);
   var $new_order_line = $(document.getElementById("order-line")).clone().appendTo("tbody");
   //console.log($new_order_line);
+
   $new_order_line.find(".product-quantity").val("").prop("disabled", true);
   $new_order_line.find(".product-total").text("");
   $order_line.after($new_order_line);
