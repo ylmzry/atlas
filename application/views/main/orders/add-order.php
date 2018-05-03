@@ -42,7 +42,7 @@
 	                      <div class="padding-30 sm-padding-5">
 	                        <table class="table table-condensed">
 	                          <tbody>
-	                          <tr>
+	                          <tr id="order-line">
 	                            <td class="col-lg-8 col-md-6 col-sm-7">
 	                              <a href="#" class="remove-item"><i class="pg-close"></i></a>
                                   <select class="product-selector" name="product_selector[]">
@@ -60,8 +60,14 @@
 	                            <td class=" col-lg-2 col-md-3 col-sm-2 text-right">
 	                              <h4 class="text-primary no-margin font-montserrat product-total"></h4>
 	                            </td>
+
 	                          </tr>
 	                        </tbody></table>
+
+                          <button class="btn btn-primary btn-cons pull-right" type="button" onclick="addNewOrderLine()">
+                            <span>Add New Product</span>
+                          </button>
+
 
 	                        <br>
 	                        <div class="row b-a b-grey no-margin">

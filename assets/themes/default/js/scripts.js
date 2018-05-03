@@ -4,6 +4,8 @@
             var $product_row = $(this).closest("tr");
             var $product_quantity = $product_row.find(".product-quantity");
             var $product_total = $product_row.find(".product-total");
+
+
             if ($(this).val() == "0") {
                 $product_total.text("");
                 $product_quantity.val("");
@@ -16,10 +18,10 @@
                 var total_price = product_price * quantity;
                 $product_total.text("$"+total_price);
                 $product_quantity.prop("disabled", false);
-                var $new_row = $product_row.clone(true);
-                $new_row.find(".product-quantity").val("").prop("disabled", true);
-                $new_row.find(".product-total").text("");
-                $product_row.after($new_row);
+                //var $new_row = $product_row.clone(true);
+                //$new_row.find(".product-quantity").val("").prop("disabled", true);
+                //$new_row.find(".product-total").text("");
+                //$product_row.after($new_row);
             }
         });
         $(".product-quantity").on("input", function() {
@@ -33,3 +35,15 @@
         });
     });
 })(window.jQuery);
+
+function addNewOrderLine() {
+  var $order_line = document.getElementById("order-line");
+  //var $new_order_line = $order_line.clone(true);
+  var $new_order_line = $(document.getElementById("order-line")).clone().appendTo("tbody");
+  //console.log($new_order_line);
+  $new_order_line.find(".product-quantity").val("").prop("disabled", true);
+  $new_order_line.find(".product-total").text("");
+  $order_line.after($new_order_line);
+
+  //$order_line.innerHTML = "Hello World";
+}

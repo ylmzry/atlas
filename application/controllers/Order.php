@@ -57,7 +57,7 @@ class Order extends CI_Controller{
 			$this->load->js('template/pagesadmin/assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js');
 
 
-			/*
+      /*
       $this->load->js('template/pagesadmin/assets/plugins/nvd3/lib/d3.v3.js');
       $this->load->js('template/pagesadmin/assets/plugins/nvd3/nv.d3.min.js');
       $this->load->js('template/pagesadmin/assets/plugins/nvd3/src/utils.js');
@@ -78,10 +78,10 @@ class Order extends CI_Controller{
 
 			$this->load->js('template/pagesadmin/assets/js/form_wizard.js');
 			$this->load->js('template/pagesadmin/assets/js/scripts.js');
-            
+
             // OWN Scripts
             $this->load->js('assets/themes/default/js/scripts.js');
-		
+
       $this->load->section('sidebar', 'themes/sections/sidebar');
 	    $this->load->section('header', 'themes/sections/header', $data);
       $this->load->section('quickview', 'themes/sections/quickview');
@@ -110,7 +110,7 @@ class Order extends CI_Controller{
       $datasuccess['page_title'] = "Succesfully Added";
 
       $dataform['products'] = $this->OrdersModel->get_all_products();
-      
+
       $this->form_validation->set_rules(
           'pname', 'Product Name', 'required|alpha_numeric_spaces',
            array(
