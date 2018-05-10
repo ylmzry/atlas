@@ -28,7 +28,7 @@
                   </div>
 
                   <div class="card-block">
-                      <a href='" . site_url('products/view/'.$product['p_id']) . "' class="btn btn-primary" type="submit" >View Product</a>
+                      <a href="<?php echo site_url('products/view/'.$product['p_id']); ?>" class="btn btn-primary" type="submit" >View Product</a>
                   </div>
                 </div>
 
