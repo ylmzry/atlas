@@ -107,22 +107,22 @@ class Order extends CI_Controller{
 
     $dataform['page_title'] = "Add Order";
     //$dataform['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
-    $datasuccess['page_title'] = "Succesfully Added";
+    $datasuccess['page_title'] = "Order Succesfully Added";
 
     $dataform['products'] = $this->OrdersModel->get_all_products();
+    $dataform['customers'] = $this->OrdersModel->get_all_customers();
 
     $this->form_validation->set_rules(
-      'pname', 'Product Name', 'required|alpha_numeric_spaces',
+      'customer_selector', 'Customer', 'required',
       array(
-        'required'=>'Product Name is empty.',
-        'alpha_numeric_spaces'=>'Product Name contains something other than alpha-numeric characters or spaces.',
+        'required'=>'Select a Customer',
       )
     );
 
     if ($this->form_validation->run() === FALSE) {
       $this->load->view('main/orders/add-order', $dataform);
     } else {
-      $this->ProductsModel->add_product();
+      $this->OrdersModel->add_order();
       $this->load->view('main/orders/add-order-success', $datasuccess);
     }
   }

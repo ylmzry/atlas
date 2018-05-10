@@ -19,6 +19,11 @@ class OrdersModel extends CI_Model{
     return $query->result_array();
   }
 
+  public function get_all_customers() {
+    $query = $this->db->query('SELECT * FROM customer');
+    return $query->result_array();
+  }
+
  /*
   // Get Product Informations by ID
   public function get_product($id = 0)  {
@@ -37,18 +42,56 @@ class OrdersModel extends CI_Model{
     $query = $this->db->query('SELECT id, name FROM categories');
     return $query->result_array();
   }
-
-  //Add New Product
-  public function add_product() {
+  */
+  //Add New Order
+  public function add_order() {
     $this->load->helper('url');
-    $newproduct = array(
-      'name' => $this->input->post('pname'),
-      'category_id' => $this->input->post('pcat'),
-      'price' => $this->input->post('pprice')
+    $today = date('j-m-y');
+    $neworder = array(
+      'CustomerID' => $this->input->post('customer_selector'),
+      'OrderDate' => $today
     );
-    return $this->db->insert('product', $newproduct);
-  }
+    /*
+    $neworder = array(
+      'CustomerID' => $this->input->post('customer_selector'),
+      'OrderDate' => $today
+    ); */
+    $this->db->insert('order', $neworder);
+    $order_id = $this->db->insert_id();
+    //INSERT INTO `orderline` (`OrderLineID`, `OrderID`, `ProductID`, `Quantity`, `TotalAmount`) VALUES (NULL, '1', '3', '4', NULL);
 
+    $selected_products = $this->input->post('product_selector');
+    $view_data['search'] = $selected_products;
+    $selected_products_quantities = $this->input->post('product_quantity');
+
+
+    /* lOG */
+    $myfile = fopen("log.txt", "w") or die("Unable to open file!");
+
+    fwrite($myfile, (string)$view_data['search']);
+    fclose($myfile);
+
+    if( !empty($selected_products) ) {
+      foreach ($selected_products as $selected_product) {
+        $neworderline = array(
+            'OrderID' =>  $order_id,
+            'ProductID' => $selected_product,
+            'Quantity' => $this->input->post('product_quantity'),
+        );
+        return $this->db->insert('orderline', $neworderline);
+      }
+    }
+
+
+/*    $neworderline = array(
+      'OrderID' =>  $order_id,
+      'ProductID' => $this->input->post('product_selector'),
+      'Quantity' => $this->input->post('product_quantity'),
+    ); */
+
+    //return $this->db->insert('orderline', $neworderline);
+  }
+  /*
   //Save Changes
   public function edit_product($id) {
     $this->load->helper('url');

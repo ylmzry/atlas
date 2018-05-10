@@ -29,7 +29,10 @@
 	                </li>
 	              </ul><div class="nav-tab-dropdown cs-wrapper full-width hidden-md-up"><div class="cs-select cs-skin-slide full-width" tabindex="0"><span class="cs-placeholder"> Your cart</span><div class="cs-options"><ul><li data-option="" data-value="#tab1"><span> Your cart</span></li><li data-option="" data-value="#tab2"><span> Shipping information</span></li><li data-option="" data-value="#tab3"><span> Payment details</span></li><li data-option="" data-value="#tab4"><span> Summary</span></li></ul></div><select class="cs-select cs-skin-slide full-width" data-init-plugin="cs-select"><option value="#tab1" selected=""> Your cart</option><option value="#tab2"> Shipping information</option><option value="#tab3"> Payment details</option><option value="#tab4"> Summary</option></select><div class="cs-backdrop"></div></div></div>
 	              <!-- Tab panes -->
-		      <?php echo form_open('order/add'); ?>
+
+
+
+		            <?php echo form_open('order/add'); ?>
 	              <div class="tab-content">
 	                <div class="tab-pane padding-20 sm-no-padding slide-left active" id="tab1" aria-expanded="true">
 	                  <div class="row row-same-height">
@@ -37,6 +40,15 @@
 	                      <div class="padding-30 sm-padding-5 sm-m-t-15 m-t-50">
 	                        <i class="fa fa-shopping-cart fa-2x hint-text"></i>
 	                        <h2>Please Select Products</h2>
+                          <!-- Start Form Validation Errors -->
+                          <?php if(validation_errors()) { ?>
+                            <div class="alert alert-danger" role="alert">
+                              <button class="close" data-dismiss="alert"></button>
+                              <?php echo validation_errors(); ?>
+                            </div>
+                          <?php } ?>
+                          <!-- End Form Validation Errors -->
+
 	                      </div>
 	                    </div>
 	                    <div class="col-md-7">
@@ -46,13 +58,15 @@
 	                          <tr class="order-line-tr">
 	                            <td class="col-lg-8 col-md-6 col-sm-7">
 	                              <a href="#" class="order-remove-item"><i class="pg-close"></i></a>
-                                  <select class="product-selector" name="product_selector[]">
+                                  <label for="product_selector">Product</label>
+
+                                  <select class="product-selector" name="product_selector">
                                     <option value="0">Please select...</option>
-                                  <?php
-                                  foreach ($products as $product) {
-                                      echo '<option value="'.$product["id"].'" data-price="'.$product["price"].'">'.$product["name"].'</option>';
-                                  }
-                                  ?>
+                                    <?php
+                                      foreach ($products as $product) {
+                                        echo '<option value="'.$product["id"].'" data-price="'.$product["price"].'">'.$product["name"].'</option>';
+                                      }
+                                      ?>
                                   </select>
 	                            </td>
 	                            <td class="col-lg-2 col-md-3 col-sm-3 text-right">
@@ -68,8 +82,6 @@
                           <button class="btn btn-primary btn-cons pull-right" type="button" onclick="addNewOrderLine()">
                             <span>Add New Product</span>
                           </button>
-
-
 	                        <br>
 	                        <div class="row b-a b-grey no-margin">
 	                          <div class="col-md-3 p-l-10 sm-padding-15 align-items-center d-flex">
@@ -100,63 +112,23 @@
 	                    </div>
 	                    <div class="col-md-7">
 	                      <div class="padding-30 sm-padding-5">
-
-	                          <p>Name and Email Address</p>
-	                          <div class="form-group-attached">
-	                            <div class="row clearfix">
-	                              <div class="col-sm-6">
-	                                <div class="form-group form-group-default required">
-	                                  <label>First name</label>
-	                                  <input type="text" class="form-control" required="">
-	                                </div>
-	                              </div>
-	                              <div class="col-sm-6">
-	                                <div class="form-group form-group-default">
-	                                  <label>Last name</label>
-	                                  <input type="text" class="form-control">
-	                                </div>
-	                              </div>
-	                            </div>
-	                            <div class="form-group form-group-default required">
-	                              <label>Email</label>
-	                              <input type="text" class="form-control" required="">
-	                            </div>
-	                          </div>
-	                          <br>
-	                          <p>Billing Address</p>
-	                          <div class="form-group-attached">
-	                            <div class="form-group form-group-default required">
-	                              <label>Address</label>
-	                              <input type="text" class="form-control" placeholder="Current address" required="">
-	                            </div>
-
-	                            <div class="row clearfix">
-	                              <div class="col-sm-9">
-	                                <div class="form-group form-group-default required">
-	                                  <label>State/Province</label>
-	                                  <input type="text" class="form-control" placeholder="Outside US/Canada" required="">
-	                                </div>
-	                              </div>
-	                              <div class="col-sm-3">
-	                                <div class="form-group form-group-default">
-	                                  <label>Zip code</label>
-	                                  <input type="text" class="form-control">
-	                                </div>
-	                              </div>
-	                            </div>
-
-	                          </div>
-
+                          <label for="customer_selecto">Customer</label>
+                          <select class="customer-selector" name="customer_selector">
+                            <option value="0">Please select...</option>
+                            <?php
+                              foreach ($customers as $customer) {
+                                echo '<option value="'.$customer["CustomerID"].'">'.$customer["Name"].'</option>';
+                              }
+                              ?>
+                          </select>
 	                      </div>
 	                    </div>
 	                  </div>
 	                </div>
 
 	                <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab4" aria-expanded="false">
-	                  <h1>Thank you.</h1>
-			  <div id="product-overview">
-
-			  </div>
+	                  <h1>Summary</h1>
+			                 <div id="product-overview"></div>
 	                </div>
 
 
@@ -185,7 +157,7 @@
 	                  </ul>
 	                </div>
 	              </div>
-		  		</form>
+		  		       </form>
 		</div>
 
           </div>

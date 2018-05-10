@@ -54,8 +54,8 @@ function addNewOrderLine() {
 function refresh_total() {
   var total_sum = 0;
   var $overview = $("#product-overview");
-  var overview_html = '<table>';
-
+  var overview_html = '<h3>Products</h3><table class="table table-hover">';
+  overview_html += '<thead><tr><th><td>Product Name</td><td>Quantity</td><td>Price</td></th></tr></thead>';
   $(".order-line-tr").each(function() {
     var $product_selector = $(this).find(".product-selector");
     if ($product_selector.val() != "0") {
@@ -65,9 +65,10 @@ function refresh_total() {
       total_sum += this_sum;
 
       overview_html += '<tr><td>';
-      overview_html += product_quantity;
-      overview_html += '</td><td>';
       overview_html +=  $product_selector.find('option:selected').html();
+
+      overview_html += '</td><td>';
+      overview_html += product_quantity;
       overview_html += '</td><td>';
       overview_html += '$'+this_sum;
       overview_html += '</td></tr>';
