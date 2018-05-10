@@ -29,6 +29,7 @@
 	                </li>
 	              </ul><div class="nav-tab-dropdown cs-wrapper full-width hidden-md-up"><div class="cs-select cs-skin-slide full-width" tabindex="0"><span class="cs-placeholder"> Your cart</span><div class="cs-options"><ul><li data-option="" data-value="#tab1"><span> Your cart</span></li><li data-option="" data-value="#tab2"><span> Shipping information</span></li><li data-option="" data-value="#tab3"><span> Payment details</span></li><li data-option="" data-value="#tab4"><span> Summary</span></li></ul></div><select class="cs-select cs-skin-slide full-width" data-init-plugin="cs-select"><option value="#tab1" selected=""> Your cart</option><option value="#tab2"> Shipping information</option><option value="#tab3"> Payment details</option><option value="#tab4"> Summary</option></select><div class="cs-backdrop"></div></div></div>
 	              <!-- Tab panes -->
+		      <?php echo form_open('order/add'); ?>
 	              <div class="tab-content">
 	                <div class="tab-pane padding-20 sm-no-padding slide-left active" id="tab1" aria-expanded="true">
 	                  <div class="row row-same-height">
@@ -41,10 +42,10 @@
 	                    <div class="col-md-7">
 	                      <div class="padding-30 sm-padding-5">
 	                        <table class="table table-condensed">
-	                          <tbody>
-	                          <tr id="order-line">
+	                          <tbody class="order-line">
+	                          <tr class="order-line-tr">
 	                            <td class="col-lg-8 col-md-6 col-sm-7">
-	                              <a href="#" class="remove-item"><i class="pg-close"></i></a>
+	                              <a href="#" class="order-remove-item"><i class="pg-close"></i></a>
                                   <select class="product-selector" name="product_selector[]">
                                     <option value="0">Please select...</option>
                                   <?php
@@ -55,7 +56,7 @@
                                   </select>
 	                            </td>
 	                            <td class="col-lg-2 col-md-3 col-sm-3 text-right">
-	                              <input type="number" name="product_quantity[]" class="form-control product-quantity" required disabled>
+	                              <input type="number" min="1" name="product_quantity[]" class="form-control product-quantity" required disabled>
 	                            </td>
 	                            <td class=" col-lg-2 col-md-3 col-sm-2 text-right">
 	                              <h4 class="text-primary no-margin font-montserrat product-total"></h4>
@@ -83,7 +84,7 @@
 	                          </div>
 	                          <div class="col-md-2 text-right bg-primary padding-10">
 	                            <h5 class="font-montserrat all-caps small no-margin hint-text text-white bold">Total</h5>
-	                            <h4 class="no-margin text-white sumofcart">$44</h4>
+	                            <h4 class="no-margin text-white sumofcart" id="price-total-all">$0</h4>
 	                          </div>
 	                        </div>
 	                      </div>
@@ -99,7 +100,7 @@
 	                    </div>
 	                    <div class="col-md-7">
 	                      <div class="padding-30 sm-padding-5">
-	                        <form role="form">
+
 	                          <p>Name and Email Address</p>
 	                          <div class="form-group-attached">
 	                            <div class="row clearfix">
@@ -145,7 +146,7 @@
 	                            </div>
 
 	                          </div>
-	                        </form>
+
 	                      </div>
 	                    </div>
 	                  </div>
@@ -153,7 +154,12 @@
 
 	                <div class="tab-pane slide-left padding-20 sm-no-padding" id="tab4" aria-expanded="false">
 	                  <h1>Thank you.</h1>
+			  <div id="product-overview">
+
+			  </div>
 	                </div>
+
+
 	                <div class="padding-20 sm-padding-5 sm-m-b-20 sm-m-t-20 bg-white clearfix">
 	                  <ul class="pager wizard no-style">
 	                    <li class="next" style="display: list-item;">
@@ -162,7 +168,7 @@
 	                      </button>
 	                    </li>
 	                    <li class="next finish" style="display: none;">
-	                      <button class="btn btn-primary btn-cons pull-right" type="button">
+	                      <button class="btn btn-primary btn-cons pull-right" type="submit">
 	                        <span>Finish</span>
 	                      </button>
 	                    </li>
@@ -178,9 +184,9 @@
 	                    </li>
 	                  </ul>
 	                </div>
-
 	              </div>
-	            </div>
+		  		</form>
+		</div>
 
           </div>
         </div>
