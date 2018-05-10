@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 27, 2018 at 09:31 AM
+-- Generation Time: May 10, 2018 at 10:27 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -50,15 +50,16 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `name` varchar(100) NOT NULL,
   `description` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`) VALUES
-(2, 'Test Category 2', 'CAt desc 2'),
-(3, 'Test Category 3', 'CAt desc 3');
+(2, 'Test Category 2', 'CAt desc 2 asdkja dj ajs djajsd jasd asas'),
+(3, 'Test Category 3', 'CAt desc 3'),
+(4, 'Cell Phones', 'Cell Phones');
 
 -- --------------------------------------------------------
 
@@ -82,17 +83,16 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `Address3` varchar(200) NOT NULL,
   `RegistrationDate` date NOT NULL,
   PRIMARY KEY (`CustomerID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
 INSERT INTO `customer` (`CustomerID`, `Name`, `Surname`, `Company`, `Logo`, `Email`, `Tel`, `Tel2`, `Fax`, `Address`, `Address2`, `Address3`, `RegistrationDate`) VALUES
-(1, 'WIFI', 'WIFI ', 'WIFI', '', 'wifi@wifi.at', '1234567', '12345678', '1234567', 'Adresse', 'Adresse LIne 2', 'ADressen Line 3', '2018-04-24'),
-(2, 'Steve', 'Jobs', 'Apple', '', '', '', '', '', '', '', '', '0000-00-00'),
-(3, 'Steve', 'Jobs', 'Apple', '', '', '', '', '', '', '', '', '0000-00-00'),
-(4, 'Steve', 'Jobs', 'Apple', '', '', '', '', '', '', '', '', '0000-00-00');
+(1, 'WIFI', 'WIFI ', 'WIFI', '', 'wifi@wifi.at', '123456789', '12345678', '1234567', 'Adresse', 'Adresse LIne 2', 'ADressen Line 3', '2018-04-24'),
+(2, 'Steve', 'Jobs', 'Apple', '', 'apple@apple.at', '12341234', '', '213123', '23123', '123123', '123123', '0000-00-00'),
+(5, 'Eray', 'Eray', 'Eray', '', 'asdasd@askd.at', '123123123', '', 'asdqasd', 'asdasd', 'dasdasd', 'dasdasd', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -141,14 +141,38 @@ DROP TABLE IF EXISTS `order`;
 CREATE TABLE IF NOT EXISTS `order` (
   `OrderID` int(11) NOT NULL AUTO_INCREMENT,
   `CustomerID` int(11) NOT NULL,
-  `OrderStatusID` int(11) NOT NULL,
-  `UserID` int(11) NOT NULL,
+  `OrderStatusID` int(11) DEFAULT NULL,
+  `UserID` int(11) DEFAULT NULL,
   `OrderDate` date NOT NULL,
   PRIMARY KEY (`OrderID`),
   KEY `OrderStatusID` (`OrderStatusID`),
   KEY `CustomerID` (`CustomerID`),
   KEY `UserID` (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`OrderID`, `CustomerID`, `OrderStatusID`, `UserID`, `OrderDate`) VALUES
+(1, 5, NULL, NULL, '2018-05-10'),
+(2, 5, NULL, NULL, '2018-05-10'),
+(3, 2, NULL, NULL, '2010-05-18'),
+(4, 2, NULL, NULL, '2010-05-18'),
+(5, 5, NULL, NULL, '2010-05-18'),
+(6, 2, NULL, NULL, '2010-05-18'),
+(7, 2, NULL, NULL, '2010-05-18'),
+(8, 5, NULL, NULL, '2010-05-18'),
+(9, 1, NULL, NULL, '2010-05-18'),
+(10, 1, NULL, NULL, '2010-05-18'),
+(11, 1, NULL, NULL, '2010-05-18'),
+(12, 1, NULL, NULL, '2010-05-18'),
+(13, 2, NULL, NULL, '2010-05-18'),
+(14, 2, NULL, NULL, '2010-05-18'),
+(15, 2, NULL, NULL, '2010-05-18'),
+(16, 2, NULL, NULL, '2010-05-18'),
+(17, 5, NULL, NULL, '2010-05-18'),
+(18, 5, NULL, NULL, '2010-05-18');
 
 -- --------------------------------------------------------
 
@@ -162,11 +186,11 @@ CREATE TABLE IF NOT EXISTS `orderline` (
   `OrderID` int(11) NOT NULL,
   `ProductID` int(11) NOT NULL,
   `Quantity` int(11) NOT NULL,
-  `TotalAmount` decimal(10,0) NOT NULL,
+  `TotalAmount` decimal(10,0) DEFAULT NULL,
   PRIMARY KEY (`OrderLineID`),
   KEY `OrderID` (`OrderID`),
   KEY `ProductID` (`ProductID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -179,7 +203,14 @@ CREATE TABLE IF NOT EXISTS `orderstatus` (
   `OrderStatusID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(200) NOT NULL,
   PRIMARY KEY (`OrderStatusID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orderstatus`
+--
+
+INSERT INTO `orderstatus` (`OrderStatusID`, `Name`) VALUES
+(1, 'Active');
 
 -- --------------------------------------------------------
 
@@ -195,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `price` decimal(10,0) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
@@ -203,9 +234,9 @@ CREATE TABLE IF NOT EXISTS `product` (
 
 INSERT INTO `product` (`id`, `name`, `category_id`, `price`) VALUES
 (3, '3', 2, '120'),
-(4, 'Test Product 3', 2, '12345'),
-(5, 'adfaf', NULL, '12'),
-(6, 'asdasd', 2, '123');
+(4, 'Test Product 4', 2, '123456'),
+(5, 'adfaf', 3, '12'),
+(6, 'asdasd', 4, '123');
 
 -- --------------------------------------------------------
 
@@ -260,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$08$lSKMVeYM7WKOg9UHdIfuE.h7UvcbQQ4B/gxH6rEG4gcG9OsIJ92G6', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1524776104, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', '$2y$08$lSKMVeYM7WKOg9UHdIfuE.h7UvcbQQ4B/gxH6rEG4gcG9OsIJ92G6', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1525977286, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '::1', 'erayyilmaz@outlook.com', '$2y$08$NEsymqNhsU13SoI0mwqfIuEP6wUs05vgvgRfTfPfeprY3k8l.Vuxq', NULL, 'erayyilmaz@outlook.com', NULL, NULL, NULL, NULL, 1523196519, NULL, 1, 'Eray', 'Yilmaz', 'Atlas', '6766494269');
 
 -- --------------------------------------------------------
