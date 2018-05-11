@@ -4,19 +4,28 @@
 	var $product_row = $(this).closest(".order-line-tr");
         var $product_quantity = $product_row.find(".product-quantity");
         var $product_total = $product_row.find(".product-total");
+        var $product_array = $product_row.find(".product-id");
+	var $product_sum = $product_row.find(".product-sum");
 	var product_id = $(this).val();
+
         if (product_id == "0") {
           $product_total.text("");
           $product_quantity.val("");
           $product_quantity.prop("disabled", true);
+	  $product_array.val("0").prop("disabled", true);
+	  $product_sum.val("").prop("disabled", true);
 	}
         else {
           $product_quantity.val("1");
           var product_price = $(this).find('option:selected').data('price');
+	  $product_sum.val(product_price);
           $product_total.text("$"+product_price);
           $product_quantity.prop("disabled", false);
+	  $product_array.prop("disabled", false);
+	  $product_sum.prop("disabled", false);
 	  $(".product-selector").find("option[value='"+product_id+"']").prop("disabled", true);
         }
+	$product_array.val(product_id);
 	if ($(this).data("saved") != undefined)
 	  $(".product-selector").find("option[value='"+$(this).data("saved")+"']").prop("disabled", false);
 	$(this).data("saved", product_id);
@@ -28,9 +37,11 @@
         var $product_row = $(this).closest(".order-line-tr");
         var $product_selector = $product_row.find(".product-selector");
         var $product_total = $product_row.find(".product-total");
+	var $product_sum = $product_row.find(".product-sum");
         var product_price = $product_selector.find('option:selected').data('price');
         var total_price = product_price * product_quantity;
         $product_total.text("$"+total_price);
+	$product_sum.val(total_price);
 	refresh_total();
       });
 
@@ -47,6 +58,8 @@
 function addNewOrderLine() {
   var $new_order_line = $(".order-line-tr").first().clone().appendTo("tbody.order-line");
   $new_order_line.find(".product-selector").val("0");
+  $new_order_line.find(".product-id").val("0").prop("disabled", true);
+  $new_order_line.find(".product-sum").val("").prop("disabled", true);
   $new_order_line.find(".product-quantity").val("").prop("disabled", true);
   $new_order_line.find(".product-total").text("");
 }

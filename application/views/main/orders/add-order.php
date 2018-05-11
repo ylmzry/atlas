@@ -59,15 +59,16 @@
 	                            <td class="col-lg-8 col-md-6 col-sm-7">
 	                              <a href="#" class="order-remove-item"><i class="pg-close"></i></a>
                                   <label for="product_selector">Product</label>
-
-                                  <select class="product-selector" name="product_selector">
+                                  <select class="product-selector" name="holder">
                                     <option value="0">Please select...</option>
                                     <?php
-                                      foreach ($products as $product) {
-                                        echo '<option value="'.$product["id"].'" data-price="'.$product["price"].'">'.$product["name"].'</option>';
-                                      }
-                                      ?>
+                                    foreach ($products as $product) {
+                                      echo '<option value="'.$product["id"].'" data-price="'.$product["price"].'">'.$product["name"].'</option>';
+                                    }
+                                    ?>
                                   </select>
+				  <input type="hidden" name="product_id[]" class="product-id" disabled>
+				  <input type="hidden" name="product_total[]" class="product-sum" disabled>
 	                            </td>
 	                            <td class="col-lg-2 col-md-3 col-sm-3 text-right">
 	                              <input type="number" min="1" name="product_quantity[]" class="form-control product-quantity" required disabled>
