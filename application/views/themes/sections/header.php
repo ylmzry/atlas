@@ -8,8 +8,8 @@
     <div class="brand inline">
       <img src="assets/img/logo.png" alt="logo" data-src="assets/img/logo.png" data-src-retina="assets/img/logo_2x.png" width="78" height="22">
     </div>
-    <a href="#" class="btn btn-link text-primary m-l-20 hidden-md-down">Add New Item</a>
-    <a href="#" class="search-link hidden-md-down" data-toggle="search"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a>
+    
+    <a href="#" class="search-link hidden-md-down" data-toggle="search" style="display:none"><i class="pg-search"></i>Type anywhere to <span class="bold">search</span></a>
   </div>
   <div class="d-flex align-items-center">
     <!-- START NOTIFICATION LIST -->

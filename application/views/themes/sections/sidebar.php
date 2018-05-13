@@ -4,7 +4,10 @@
   <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
   <!-- BEGIN SIDEBAR MENU HEADER-->
   <div class="sidebar-header">
-    <img src="<?php echo base_url(); ?>template/pagesadmin/assets/img/logo.png" alt="logo" class="brand" data-src="<?php echo base_url(); ?>template/pagesadmin/assets/img/logo.png" data-src-retina="<?php echo base_url(); ?>template/pagesadmin/assets/img/logo_2x.png" width="78" height="22">
+    <img
+    src="<?php echo base_url(); ?>template/pagesadmin/assets/img/logo.png" alt="logo" class="brand"
+    data-src="<?php echo base_url(); ?>template/pagesadmin/assets/img/logo.png"
+    data-src-retina="<?php echo base_url(); ?>template/pagesadmin/assets/img/logo_2x.png" width="78" height="22">
   </div>
   <!-- END SIDEBAR MENU HEADER-->
   <!-- START SIDEBAR MENU -->
@@ -51,7 +54,9 @@
         <a href="javascript:;"><span class="title">ORDERS</span>
         <span class=" arrow"></span></a>
         <ul class="sub-menu">
-
+          <li class="">
+            <a href="<?php echo base_url(); ?>index.php/order">Orders</a>
+          </li>
           <li class="">
             <a href="<?php echo base_url(); ?>index.php/order/add">Add news Order</a>
           </li>

@@ -7,7 +7,7 @@
               <li class="breadcrumb-item active">Orders
               </li>
             </ul>
-						<?php //var_dump($all_products); ?>
+
             <!-- END BREADCRUMB -->
             <h3 class="page-title">Orders</h3>
           </div>
@@ -15,32 +15,32 @@
           	 <table class="table table-hover">
 							<thead>
 								<tr>
-                  <th>Order ID<th>
+                  <th>OrderID</th>
 									<th>Customer Name</th>
 									<th>Status</th>
+
 									<th>Date</th>
-                  <th>Total Amount</th>
+                  <th></th>
 								</tr>
 							</thead>
 							<tbody>
-							<?php /* foreach ($all_products as $product) {
+							<?php  foreach ($all_orders as $order) {
 								echo "<tr>";
+								echo "<td>" . $order['OrderID'] . "</td>";
+								echo "<td>" . $order['Company'] . "</td>";
+                echo "<td>" . $order['OrderStatusID'] . "</td>";
 
-								echo "<td>" . $product['p_name'] . "</td>";
-								echo "<td>" . $product['cat_name'] . "</td>";
-								echo "<td>EUR " . number_format($product['price'],2) . "</td>";
+                echo "<td>" . $order['OrderDate'] . "</td>";
                 echo "<td>
                       <div class='btn-group'>
 												<a type='button' class='btn btn-success' href='" .
-												site_url('products/view/'.$product['p_id']) . "'><i class='fa fa-eye'></i></a>
-                          <a type='button' class='btn btn-success' href='" .
-                          site_url('products/edit/'.$product['p_id']) . "'><i class='fa fa-pencil'></i></a>
-                          <a type='button' class='btn btn-success' href='" .
-                          site_url('products/delete/'.$product['p_id']) . "' onclick=\"if (confirm('Are you sure you want to delete?')) return true; else return false;\"><i class='fa fa-trash-o'></i></a>
+												site_url('order/view/'.$order['OrderID']) . "'><i class='fa fa-eye'></i></a>
+
+
                         </div>
                       </td>";
 								echo "</tr>";
-							} */ ?>
+							} ?>
 						</tbody>
 						</table>
           </div>

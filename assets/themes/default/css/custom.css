@@ -1,6 +1,6 @@
 .big-code, .big-code pre, .big-code pre.php
 {
-	font-size: 16px !important;	
+	font-size: 16px !important;
 }
 .bsa_it_p{
 	display:none !important;
@@ -35,4 +35,16 @@
 	border-bottom: none;
 	padding: 5px;
 	text-align: left;
+}
+
+select.product-selector {
+	font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    border: 1px solid #ededed;
+    height: 36px;
+}
+
+body.menu-pin .page-sidebar {
+	    box-shadow: 0px 0px 24px #888888;
 }

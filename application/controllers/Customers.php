@@ -25,6 +25,7 @@ class Customers extends CI_Controller{
       $this->load->css('template/pagesadmin/assets/css/style.css');
       $this->load->css('template/pagesadmin/pages/css/pages-icons.css');
       $this->load->css('template/pagesadmin/pages/css/themes/light.css');
+      $this->load->css('assets/themes/default/css/custom.css');
 
       $this->load->js('template/pagesadmin/assets/plugins/feather-icons/feather.min.js');
       $this->load->js('template/pagesadmin/assets/plugins/pace/pace.min.js');

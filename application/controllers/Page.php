@@ -23,6 +23,7 @@ class Page extends CI_Controller{
     $this->load->css('template/pagesadmin/assets/css/dashboard.widgets.css');
     $this->load->css('template/pagesadmin/pages/css/pages-icons.css');
     $this->load->css('template/pagesadmin/pages/css/themes/light.css');
+    $this->load->css('assets/themes/default/css/custom.css');
 
     $this->load->js('template/pagesadmin/assets/plugins/feather-icons/feather.min.js');
     $this->load->js('template/pagesadmin/assets/plugins/pace/pace.min.js');
@@ -63,21 +64,14 @@ class Page extends CI_Controller{
 		$this->load->section('overlay', 'themes/sections/overlay');
   }
 
-  function index()
-  {
-		
-		$this->output->set_template('default');
-		//$data['user']=$this->ion_auth->user()->row_array();
-		$this->load->view('main/dashboard', $data);
-
+  function index()  {
+	  $this->output->set_template('default');
+		$this->load->view('main/dashboard');
   }
 
   public function dashboard() {
 		$this->output->set_template('default');
-		//$data['user']=$this->ion_auth->user()->row_array();
-		//$this->load->section('header', 'themes/sections/header', $data);
 		$this->load->view('main/dashboard');
-		// $this->load->view('main/dashboard');
   }
 
 }

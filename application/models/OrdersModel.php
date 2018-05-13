@@ -10,7 +10,7 @@ class OrdersModel extends CI_Model{
   }
   // Get all Products form Database with all fields
   public function get_all_orders() {
-    $query = $this->db->get('order');
+    $query = $this->db->query('SELECT * FROM orders LEFT OUTER JOIN customer ON orders.CustomerID = customer.CustomerID');
     return $query->result_array();
   }
 
@@ -24,26 +24,40 @@ class OrdersModel extends CI_Model{
     return $query->result_array();
   }
 
-  /*
-     // Get Product Informations by ID
-     public function get_product($id = 0)  {
+  public function get_order($id = 0)  {
      if ($id===0) {
-     //$query = $this->db->get('product');
-     $query = $this->db->query('SELECT * FROM product LEFT OUTER JOIN categories ON product.id = categories.id');
-     return $query->result_array();
-     } else {
-     $query = $this->db->query('SELECT *, product.id as p_id, categories.name as cat_name, product.name as p_name FROM product LEFT OUTER JOIN categories ON product.category_id = categories.id WHERE product.id=' . $id );
-     return $query->row_array();
+      $query = $this->db->query('SELECT * FROM orders');
+      return $query->result_array();
+    } else {
+        $query = $this->db->query('SELECT * FROM orders LEFT OUTER JOIN customer ON orders.CustomerID = customer.CustomerID WHERE orders.orderid=' . $id );
+       return $query->row_array();
      }
-     }
+  }
 
-     //Get All Product Categories from Database
-     public function get_all_product_categories() {
-     $query = $this->db->query('SELECT id, name FROM categories');
+  public function get_order_detail($id= 0) {
+    if ($id===0) {
+    //$query = $this->db->get('product');
+     $query = $this->db->query('SELECT * FROM orders');
      return $query->result_array();
-     }
-   */
-  //Add New Order
+   } else {
+       $query = $this->db->query('SELECT * FROM orderline LEFT OUTER JOIN product ON orderline.ProductID = product.id LEFT OUTER JOIN orders ON orderline.OrderID = orders.OrderID WHERE orders.orderid=' . $id );
+      return $query->result_array();
+    }
+
+  }
+
+  public function get_order_line_detail($id= 0) {
+    if ($id===0) {
+    //$query = $this->db->get('product');
+     $query = $this->db->query('SELECT * FROM orders');
+     return $query->result_array();
+   } else {
+       $query = $this->db->query('SELECT * FROM orderline WHERE OrderLineID=' . $id );
+      return $query->row_array();
+    }
+
+  }
+
   public function add_order() {
     $this->load->helper('url');
     $today = date('Y-m-d');
@@ -52,7 +66,7 @@ class OrdersModel extends CI_Model{
       'OrderDate' => $today
     );
 
-    $this->db->insert('order', $neworder);
+    $this->db->insert('orders', $neworder);
     $order_id = $this->db->insert_id();
 
     $selected_products = $this->input->post('product_id');
@@ -63,38 +77,22 @@ class OrdersModel extends CI_Model{
       $i = 0;
       foreach ($selected_products as $selected_product) {
         $neworderline = array(
-          'OrderID' =>  $order_id,
-          'ProductID' => $selected_product,
-          'Quantity' => $selected_products_quantities[$i],
-	  'TotalAmount' => $selected_products_total[$i++]
+            'OrderID' =>  $order_id,
+            'ProductID' => $selected_product,
+            'Quantity' => $selected_products_quantities[$i],
+	          'TotalAmount' => $selected_products_total[$i++]
         );
         $this->db->insert('orderline', $neworderline);
       }
     }
   }
-  /*
-     //Save Changes
-     public function edit_product($id) {
-     $this->load->helper('url');
-     $product = array(
-     'name' => $this->input->post('pname'),
-     'category_id' => $this->input->post('pcat'),
-     'price' => $this->input->post('pprice')
-     );
-     $this->db->where('id', $id);
-     return $this->db->update('product', $product);
-
-     if ($id === 0) {
-     return false;
-     } else {
-     $this->db->where('id', $id);
-     return $this->db->update('product', $product);
-     }
-     }
-
-     public function delete_product($id) {
-     $this->db->where('id', $id);
-     return $this->db->delete('product');
-     } */
+  public function delete_order($id) {
+       $this->db->where('orderid', $id);
+       return $this->db->delete('orders');
+  }
+  public function delete_order_item($orderlineid) {
+    $this->db->where('OrderLineID', $orderlineid);
+    return $this->db->delete('orderline');
+ }
 
 }

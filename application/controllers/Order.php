@@ -17,16 +17,10 @@ class Order extends CI_Controller{
     $this->load->css('template/pagesadmin/assets/plugins/jquery-scrollbar/jquery.scrollbar.css');
     $this->load->css('template/pagesadmin/assets/plugins/select2/css/select2.min.css');
     $this->load->css('template/pagesadmin/assets/plugins/switchery/css/switchery.min.css');
-    //$this->load->css('template/pagesadmin/assets/plugins/nvd3/nv.d3.min.css');
-    //$this->load->css('template/pagesadmin/assets/plugins/rickshaw/rickshaw.min.css');
-    //$this->load->css('template/pagesadmin/assets/plugins/bootstrap-datepicker/css/datepicker3.css');
-    //$this->load->css('template/pagesadmin/assets/plugins/mapplic/css/mapplic.css');
-    //$this->load->css('template/pagesadmin/assets/css/dashboard.widgets.css');
     $this->load->css('template/pagesadmin/assets/css/style.css');
     $this->load->css('template/pagesadmin/pages/css/pages-icons.css');
     $this->load->css('template/pagesadmin/pages/css/themes/light.css');
-
-
+    $this->load->css('assets/themes/default/css/custom.css');
 
     $this->load->js('template/pagesadmin/assets/plugins/feather-icons/feather.min.js');
     $this->load->js('template/pagesadmin/assets/plugins/pace/pace.min.js');
@@ -43,7 +37,6 @@ class Order extends CI_Controller{
     $this->load->js('template/pagesadmin/assets/plugins/select2/js/select2.full.min.js');
     $this->load->js('template/pagesadmin/assets/plugins/classie/classie.js');
     $this->load->js('template/pagesadmin/assets/plugins/switchery/js/switchery.min.js');
-
     $this->load->js('template/pagesadmin/assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.all.min.js');
     $this->load->js('template/pagesadmin/assets/plugins/jquery-autonumeric/autoNumeric.js');
     $this->load->js('template/pagesadmin/assets/plugins/dropzone/dropzone.min.js');
@@ -56,26 +49,7 @@ class Order extends CI_Controller{
     $this->load->js('template/pagesadmin/assets/plugins/moment/moment.min.js');
     $this->load->js('template/pagesadmin/assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js');
 
-
-    /*
-       $this->load->js('template/pagesadmin/assets/plugins/nvd3/lib/d3.v3.js');
-       $this->load->js('template/pagesadmin/assets/plugins/nvd3/nv.d3.min.js');
-       $this->load->js('template/pagesadmin/assets/plugins/nvd3/src/utils.js');
-       $this->load->js('template/pagesadmin/assets/plugins/nvd3/src/tooltip.js');
-       $this->load->js('template/pagesadmin/assets/plugins/nvd3/src/interactiveLayer.js');
-       $this->load->js('template/pagesadmin/assets/plugins/nvd3/src/models/axis.js');
-       $this->load->js('template/pagesadmin/assets/plugins/nvd3/src/models/line.js');
-       $this->load->js('template/pagesadmin/assets/plugins/nvd3/src/models/lineWithFocusChart.js');
-       $this->load->js('template/pagesadmin/assets/plugins/rickshaw/rickshaw.min.js');
-       $this->load->js('template/pagesadmin/assets/plugins/mapplic/js/hammer.js');
-       $this->load->js('template/pagesadmin/assets/plugins/mapplic/js/jquery.mousewheel.js');
-       $this->load->js('template/pagesadmin/assets/plugins/mapplic/js/mapplic.js');
-       $this->load->js('template/pagesadmin/assets/js/dashboard.js');
-     */
-
     $this->load->js('template/pagesadmin/pages/js/pages.min.js');
-    //$this->load->js('template/pagesadmin/assets/js/dashboard.js');
-
     $this->load->js('template/pagesadmin/assets/js/form_wizard.js');
     $this->load->js('template/pagesadmin/assets/js/scripts.js');
 
@@ -95,12 +69,12 @@ class Order extends CI_Controller{
     $data['page_title'] = "Orders";
     $this->load->view('main/orders/order', $data);
   }
-  /*
-     public function view($id) {
-     $data['product'] = $this->ProductsModel->get_product($id);
-     $this->load->view('main/products/single-product', $data);
-     }
-   */
+  public function view($id) {
+     $data['order'] = $this->OrdersModel->get_order($id);
+     $data['orderdetail'] = $this->OrdersModel->get_order_detail($id);
+     $this->load->view('main/orders/single-order', $data);
+   }
+
   public function add() {
     $this->load->helper(array('form', 'url'));
     $this->load->library('form_validation');
@@ -126,49 +100,73 @@ class Order extends CI_Controller{
       $this->load->view('main/orders/add-order-success', $datasuccess);
     }
   }
+  public function editorderline($orderlineid) {
+    $this->load->helper(array('form', 'url'));
+    $this->load->library('form_validation');
+
+    $data['orderline'] = $this->OrdersModel->get_order_line_detail($orderlineid);
+    $data['page_title'] = "Edit Order Line";
+
+    $this->form_validation->set_rules('pcat', 'Product Category', 'required',
+      array(
+      ' required'      => 'Product Category is empty.',
+      )
+      );
+
+    if ($this->form_validation->run() === FALSE) {
+      $this->load->view('main/orders/edit-order-line', $data);
+    } else {
+      $this->ProductsModel->edit_product($id);
+      $this->load->view('main/orders/edit-order-line-success', $data);
+    }
+  }
   /*
      public function edit($id) {
-     $this->load->helper(array('form', 'url'));
-     $this->load->library('form_validation');
 
-     $data['product'] = $this->ProductsModel->get_product($id);
-     $data['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
-     $data['page_title'] = "Edit Product";
 
-     $datasuccess['page_title'] = "Changes succesfully Saved";
+       $this->load->helper(array('form', 'url'));
+       $this->load->library('form_validation');
 
-     $this->form_validation->set_rules(
-     'pname', 'Product Name', 'required|alpha_numeric_spaces',
-     array(
-     'required'=>'Product Name is empty.',
-     'alpha_numeric_spaces'=>'Product Name contains something other than alpha-numeric characters or spaces.',
-     )
+       $data['product'] = $this->ProductsModel->get_product($id);
+       $data['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
+       $data['page_title'] = "Edit Product";
+
+       $datasuccess['page_title'] = "Changes succesfully Saved";
+
+       $this->form_validation->set_rules(
+       'pname', 'Product Name', 'required|alpha_numeric_spaces',
+       array(
+       'required'=>'Product Name is empty.',
+       'alpha_numeric_spaces'=>'Product Name contains something other than alpha-numeric characters or spaces.',
+       )
      );
      $this->form_validation->set_rules('pcat', 'Product Category', 'required',
-     array(
-     ' required'      => 'Product Category is empty.',
-     )
-     );
+       array(
+       ' required'      => 'Product Category is empty.',
+       )
+       );
      $this->form_validation->set_rules('pprice', 'Product Price', 'required|alpha_numeric_spaces',
-     array(
-     'required'      => 'Product Name is empty.',
-     'decimal'     => 'Product Price contains something other than alpha-numeric characters or spaces.',
-     )
+       array(
+       'required'      => 'Product Name is empty.',
+       'decimal'     => 'Product Price contains something other than alpha-numeric characters or spaces.',
+       )
      );
 
      if ($this->form_validation->run() === FALSE) {
-     $this->load->view('main/products/edit-product', $data);
+       $this->load->view('main/products/edit-product', $data);
      } else {
      $this->ProductsModel->edit_product($id);
      $this->load->view('main/products/edit-product-success', $datasuccess, $data);
-     }
+   }
 
-     }
+     }*/
 
      public function delete($id) {
-     $data['product'] = $this->ProductsModel->get_product($id);
-     $this->ProductsModel->delete_product($id);
-     //$data['deletesuccess'] = "Product Succesfully deleted";
-     redirect( base_url() . 'index.php/products');
-     } */
+       $this->OrdersModel->delete_order($id);
+       redirect( base_url() . 'index.php/order');
+     }
+     public function deleteorderitem($orderid, $orderlineid) {
+       $this->OrdersModel->delete_order_item($orderlineid);
+       redirect( base_url() . 'index.php/order/view/' . $orderid);
+     }
 }

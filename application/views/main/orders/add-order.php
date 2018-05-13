@@ -58,7 +58,7 @@
 	                          <tr class="order-line-tr">
 	                            <td class="col-lg-8 col-md-6 col-sm-7">
 	                              <a href="#" class="order-remove-item"><i class="pg-close"></i></a>
-                                  <label for="product_selector">Product</label>
+                                  <label for="product_selector" style="display: none">Product</label>
                                   <select class="product-selector" name="holder">
                                     <option value="0">Please select...</option>
                                     <?php
@@ -67,8 +67,8 @@
                                     }
                                     ?>
                                   </select>
-				  <input type="hidden" name="product_id[]" class="product-id" disabled>
-				  <input type="hidden" name="product_total[]" class="product-sum" disabled>
+				                           <input type="hidden" name="product_id[]" class="product-id" disabled>
+				                           <input type="hidden" name="product_total[]" class="product-sum" disabled>
 	                            </td>
 	                            <td class="col-lg-2 col-md-3 col-sm-3 text-right">
 	                              <input type="number" min="1" name="product_quantity[]" class="form-control product-quantity" required disabled>
@@ -113,7 +113,7 @@
 	                    </div>
 	                    <div class="col-md-7">
 	                      <div class="padding-30 sm-padding-5">
-                          <label for="customer_selecto">Customer</label>
+                          <label for="customer_selecto" style="display: none">Customer</label>
                           <select class="customer-selector" name="customer_selector">
                             <option value="0">Please select...</option>
                             <?php

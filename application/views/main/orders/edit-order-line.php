@@ -5,11 +5,9 @@
 						<ul class="breadcrumb p-l-0">
               <li class="breadcrumb-item"><a href="#">Home</a>
               </li>
-              <li class="breadcrumb-item active">Products
+              <li class="breadcrumb-item active">Orderline
               </li>
-							<li class="breadcrumb-item active"><?php echo $page_title; ?>
-              </li>
-            </ul>
+						</ul>
             <!-- END BREADCRUMB -->
             <h3 class="page-title"><?php echo $page_title; ?></h3>
 
@@ -21,8 +19,7 @@
 
                   <div class="card-header ">
                     <div class="card-title">
-                      <h4><?php echo $product['p_name']; ?></h4>
-                      <?php echo var_dump($product); ?>
+                      <?php echo var_dump($orderline); ?>
 									 </div>
                   </div>
 
@@ -35,6 +32,14 @@
                       </div>
                     <?php } ?>
                     <!-- End Form Validation Errors -->
+
+                    <?php echo form_open('order/edit/' . $orderline['p_id']); ?>
+                    <div class="form-group form-group-default required ">
+                      <label for="pname">ProductID</label>
+                      <input type="text" class="form-control" required="" name="pname" value="<?php echo $product['p_name']; ?>">
+                    </div>
+                    </form>
+                    <?php /*
 
                     <?php echo form_open('products/edit/' . $product['p_id']); ?>
                       <div class="form-group form-group-default required ">
@@ -76,6 +81,7 @@
                       <button class="btn btn-primary" type="submit">Save Changes</button>
                       <button class="btn btn-secondary">Return to Product</button>
                     </form>
+                    */ ?>
 
                   </div>
                 </div>
