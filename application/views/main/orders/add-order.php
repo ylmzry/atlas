@@ -29,9 +29,6 @@
 	                </li>
 	              </ul><div class="nav-tab-dropdown cs-wrapper full-width hidden-md-up"><div class="cs-select cs-skin-slide full-width" tabindex="0"><span class="cs-placeholder"> Your cart</span><div class="cs-options"><ul><li data-option="" data-value="#tab1"><span> Your cart</span></li><li data-option="" data-value="#tab2"><span> Shipping information</span></li><li data-option="" data-value="#tab3"><span> Payment details</span></li><li data-option="" data-value="#tab4"><span> Summary</span></li></ul></div><select class="cs-select cs-skin-slide full-width" data-init-plugin="cs-select"><option value="#tab1" selected=""> Your cart</option><option value="#tab2"> Shipping information</option><option value="#tab3"> Payment details</option><option value="#tab4"> Summary</option></select><div class="cs-backdrop"></div></div></div>
 	              <!-- Tab panes -->
-
-
-
 		            <?php echo form_open('order/add'); ?>
 	              <div class="tab-content">
 	                <div class="tab-pane padding-20 sm-no-padding slide-left active" id="tab1" aria-expanded="true">
