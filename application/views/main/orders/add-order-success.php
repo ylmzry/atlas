@@ -18,7 +18,7 @@
               <div class="col-md-6 col-sm-12">
                 <div class="alert alert-success" role="alert">
                   <button class="close" data-dismiss="alert"></button>
-                  <strong>Success: </strong>Product added
+                  <strong>Success: </strong>Order added
                 </div>
               <div class="card card-default">
                   <div class="card-header ">
@@ -27,9 +27,6 @@
                     </div>
                   </div>
 
-                  <div class="card-block">
-                      <button class="btn btn-primary" type="submit">Add New Product</button>
-                  </div>
                 </div>
 
               </div>

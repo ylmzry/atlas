@@ -21,8 +21,6 @@
                   <div class="card-header ">
                     <div class="card-title">
                       <?php echo $page_title; ?>
-                      <?php //var_dump($all_products_categories); ?>
-
                     </div>
                   </div>
 
@@ -37,8 +35,7 @@
                     <!-- End Form Validation Errors -->
 
                     <?php echo form_open('products/add'); ?>
-                    <?php // <form class="" role="form" action=""> ?>
-                      <div class="form-group form-group-default required ">
+                        <div class="form-group form-group-default required ">
                         <label for="pname">Product Name</label>
                         <input type="text" class="form-control" required="" name="pname">
                       </div>

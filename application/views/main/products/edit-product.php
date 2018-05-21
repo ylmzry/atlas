@@ -22,8 +22,7 @@
                   <div class="card-header ">
                     <div class="card-title">
                       <h4><?php echo $product['p_name']; ?></h4>
-                      <?php echo var_dump($product); ?>
-									 </div>
+                    </div>
                   </div>
 
                   <div class="card-block">
@@ -70,7 +69,6 @@
                       </div>
                       <div class="form-group form-group-default required ">
                         <label for="price">Product Price</label>
-                        <!--<input type="textarea" class="form-control" required="" name="pprice" value="<?php echo number_format($product['price'],2); ?>">-->
                         <input type="textarea" class="form-control" required="" name="pprice" value="<?php echo $product['price']; ?>">
                       </div>
                       <button class="btn btn-primary" type="submit">Save Changes</button>

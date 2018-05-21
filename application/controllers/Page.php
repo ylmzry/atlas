@@ -72,11 +72,11 @@ class Page extends CI_Controller{
 	  $this->output->set_template('default');
 		$this->load->view('main/dashboard');
   }
-  /*
+
   public function dashboard() {
 		$this->output->set_template('default');
 		$this->load->view('main/dashboard');
-  } */
+  }
 
 }
 ?>

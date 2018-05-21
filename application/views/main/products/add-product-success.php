@@ -27,9 +27,6 @@
                     </div>
                   </div>
 
-                  <div class="card-block">
-                      <button class="btn btn-primary" type="submit">Add New Product</button>
-                  </div>
                 </div>
 
               </div>

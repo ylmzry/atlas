@@ -11,8 +11,7 @@
               </li>
             </ul>
             <!-- END BREADCRUMB -->
-					
-            <h3 class="page-title"><?php //echo $product['p_name']; ?></h3>
+
           </div>
           <div class=" container-fluid   container-fixed-lg">
 						<div class="row">
