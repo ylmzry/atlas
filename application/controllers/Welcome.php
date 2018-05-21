@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+/**
+ * Default Controller Codeigneter
+ */
 class Welcome extends CI_Controller {
 
 	/**

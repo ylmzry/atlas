@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Customer Controller
+ */
 class Customers extends CI_Controller{
 
   public function __construct() {
@@ -210,12 +213,15 @@ class Customers extends CI_Controller{
       }
 
   }
-/*
+ /**
+  * Delete Customer by ID
+  * @param  [int] $id [Customer ID]
+  * @return [boolean] [true false]
+  */
   public function delete($id) {
     $data['customer'] = $this->CustomersModel->get_customer($id);
     $this->CustomersModel->delete_customer($id);
-    //$data['deletesuccess'] = "Product Succesfully deleted";
     redirect( base_url() . 'index.php/customers/customers');
   }
-  */
+
 }

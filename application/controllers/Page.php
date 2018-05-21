@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Static Page Controllers
+ */
 class Page extends CI_Controller{
 
   public function __construct()
@@ -64,15 +67,16 @@ class Page extends CI_Controller{
 		$this->load->section('overlay', 'themes/sections/overlay');
   }
 
+  /* Showing Dashboard */
   function index()  {
 	  $this->output->set_template('default');
 		$this->load->view('main/dashboard');
   }
-
+  /*
   public function dashboard() {
 		$this->output->set_template('default');
 		$this->load->view('main/dashboard');
-  }
+  } */
 
 }
 ?>

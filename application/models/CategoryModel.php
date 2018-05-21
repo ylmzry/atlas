@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+/**
+ * Category Model
+ */
 class CategoryModel extends CI_Model{
 
   public function __construct()
@@ -8,13 +10,21 @@ class CategoryModel extends CI_Model{
     parent::__construct();
     $this->load->database();
   }
-  // Get all Products form Database with all fields
+
+  /**
+   * Get all Categories form Database with all fields
+   * @return [array]
+   */
   public function get_all_categories() {
 		$query = $this->db->query('SELECT * FROM categories');
     return $query->result_array();
   }
 
-  // Get Category Informations by ID
+  /**
+   * Get Category Informations by ID
+   * @param  integer $id [category id]
+   * @return [array]
+   */
   public function get_category($id = 0)  {
     if ($id===0) {
       $query = $this->db->get('categories');
@@ -25,13 +35,9 @@ class CategoryModel extends CI_Model{
     }
   }
 
-  //Get All Product Categories from Database
-  /*public function get_all_product_categories() {
-    $query = $this->db->query('SELECT DISTINCT category_id FROM product');
-    return $query->result_array();
-  }*/
-
-  //Add New Category
+  /**
+   * Adding new Category
+   */
   public function add_category() {
     $this->load->helper('url');
     $newcategory = array(
@@ -41,8 +47,11 @@ class CategoryModel extends CI_Model{
     return $this->db->insert('categories', $newcategory);
   }
 
-  //Edit and Save Changes for a Category
-
+  /**
+   * Edit and Save Changes for a Category
+   * @param  [int] $id [category id]
+   * @return [boolean] true/false
+   */
   public function edit_category($id) {
     $this->load->helper('url');
     $category = array(
@@ -60,7 +69,11 @@ class CategoryModel extends CI_Model{
     }
   }
 
-
+  /**
+   * Delete category by id
+   * @param  [int] $id [category id]
+   * @return [boolean]  True/False
+   */
   public function delete_category($id) {
     $this->db->where('id', $id);
     return $this->db->delete('categories');

@@ -8,22 +8,38 @@ class OrdersModel extends CI_Model{
     parent::__construct();
     $this->load->database();
   }
-  // Get all Products form Database with all fields
+
+  /**
+   * Get all ORders form Database with all fields
+   * @return [array]
+   */
   public function get_all_orders() {
     $query = $this->db->query('SELECT * FROM orders LEFT OUTER JOIN customer ON orders.CustomerID = customer.CustomerID');
     return $query->result_array();
   }
-
+  /**
+   * Get all Products form Database with all fields
+   * @return [array]
+   */
   public function get_all_products() {
     $query = $this->db->query('SELECT * FROM product');
     return $query->result_array();
   }
 
+  /**
+   * Get all Customers form Database with all fields
+   * @return [array]
+   */
   public function get_all_customers() {
     $query = $this->db->query('SELECT * FROM customer');
     return $query->result_array();
   }
 
+  /**
+   * Get Order Informations by ID
+   * @param  integer $id [order id]
+   * @return [array]
+   */
   public function get_order($id = 0)  {
      if ($id===0) {
       $query = $this->db->query('SELECT * FROM orders');
@@ -34,9 +50,13 @@ class OrdersModel extends CI_Model{
      }
   }
 
+  /**
+   * Get Order Informations by ID
+   * @param  integer $id [order id]
+   * @return [array]
+   */
   public function get_order_detail($id= 0) {
     if ($id===0) {
-    //$query = $this->db->get('product');
      $query = $this->db->query('SELECT * FROM orders');
      return $query->result_array();
    } else {
@@ -46,9 +66,13 @@ class OrdersModel extends CI_Model{
 
   }
 
+  /**
+   * Get Orderline detailed Informations by ID
+   * @param  integer $id [orderline id]
+   * @return [array]
+   */
   public function get_order_line_detail($id= 0) {
     if ($id===0) {
-    //$query = $this->db->get('product');
      $query = $this->db->query('SELECT * FROM orders');
      return $query->result_array();
    } else {
@@ -58,6 +82,9 @@ class OrdersModel extends CI_Model{
 
   }
 
+ /**
+  * Adding new Order
+  */
   public function add_order() {
     $this->load->helper('url');
     $today = date('Y-m-d');
@@ -86,10 +113,22 @@ class OrdersModel extends CI_Model{
       }
     }
   }
+
+  /**
+   * Delete Order by ID
+   * @param  [int] $id [Order ID]
+   * @return [boolean] true/false
+   */
   public function delete_order($id) {
        $this->db->where('orderid', $id);
        return $this->db->delete('orders');
   }
+
+  /**
+   * Delete Orderline by ID
+   * @param  [int] $id [Orderline ID]
+   * @return [boolean]  true/false
+   */
   public function delete_order_item($orderlineid) {
     $this->db->where('OrderLineID', $orderlineid);
     return $this->db->delete('orderline');

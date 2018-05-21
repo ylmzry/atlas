@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+/**
+ * Category Class
+ */
 class Category extends CI_Controller{
 
   public function __construct() {
@@ -67,25 +69,40 @@ class Category extends CI_Controller{
 
       $this->load->model('CategoryModel', 'CategoryModel');
     }
+    /**
+     * Get All Categories with Selected Informations
+     * @return [array] [All Categories with all Informations]
+     */
     function index()  {
       $data['all_categories']= $this->CategoryModel->get_all_categories();
       $data['page_title'] = "Categories";
   		$this->load->view('main/categories/categories',$data);
     }
 
+  /**
+   * View Controller
+   * @param  int $id Category ID
+   * @return [array] [Category Informations in Array]
+   */
   public function view($id) {
       $data['category'] = $this->CategoryModel->get_category($id);
       $this->load->view('main/categories/single-category', $data);
   }
 
+  /**
+   * Add new Category Controller
+   */
   public function add() {
       $this->load->helper('form');
       $this->load->library('form_validation');
 
       $dataform['page_title'] = "Add new Category";
-      //$dataform['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
       $datasuccess['page_title'] = "Succesfully Added";
 
+      /**
+       * Form Validations
+       * Category Name, Desctription
+       */
       $this->form_validation->set_rules(
           'cname', 'Category Name', 'required|alpha_numeric_spaces',
            array(
@@ -109,15 +126,17 @@ class Category extends CI_Controller{
         $this->load->view('main/categories/add-category-success', $datasuccess);
       }
   }
-
-  public function edit($id) {
+  /**
+   * Category Edit Controllers
+   * @param  [int] $id [Category ID]
+   * @return View Category edit forms and success massages
+   */
+   public function edit($id) {
     $data['category'] = $this->CategoryModel->get_category($id);
     $this->load->helper('form');
     $this->load->library('form_validation');
 
-    //$data['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
     $data['page_title'] = "Edit Category";
-
     $datasuccess['page_title'] = "Changes on category succesfully Saved";
 
     $this->form_validation->set_rules(
@@ -127,7 +146,6 @@ class Category extends CI_Controller{
            'alpha_numeric_spaces'=>'Category Name contains something other than alpha-numeric characters or spaces.',
          )
     );
-
     $this->form_validation->set_rules(
       'cdesc', 'Category Description', 'required|alpha_numeric_spaces',
        array(
@@ -145,6 +163,11 @@ class Category extends CI_Controller{
 
   }
 
+  /**
+   * Delete Category by ID
+   * @param  [int] $id [Category ID]
+   * @return [boolean]  True/False
+   */
   public function delete($id) {
     $data['category'] = $this->CategoryModel->get_category($id);
     $this->CategoryModel->delete_category($id);

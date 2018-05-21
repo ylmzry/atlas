@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Order Controller
+ */
 class Order extends CI_Controller{
 
   public function __construct() {
@@ -63,24 +66,34 @@ class Order extends CI_Controller{
 
     $this->load->model('OrdersModel', 'OrdersModel');
   }
-
+  /**
+   * Get AllOrders with Selected Informations
+   * @return [array] [All Orders with all Informations]
+   */
   function index()  {
     $data['all_orders']= $this->OrdersModel->get_all_orders();
     $data['page_title'] = "Orders";
     $this->load->view('main/orders/order', $data);
   }
+  /**
+   * Showing Detailed Informations of Orders
+   * @param  [int] $id [Order ID]
+   * @return [array]     [Order Informations in Array]
+   */
   public function view($id) {
      $data['order'] = $this->OrdersModel->get_order($id);
      $data['orderdetail'] = $this->OrdersModel->get_order_detail($id);
      $this->load->view('main/orders/single-order', $data);
    }
 
+   /**
+    * Adding new Order
+    */
   public function add() {
     $this->load->helper(array('form', 'url'));
     $this->load->library('form_validation');
 
     $dataform['page_title'] = "Add Order";
-    //$dataform['all_products_categories'] = $this->ProductsModel->get_all_product_categories();
     $datasuccess['page_title'] = "Order Succesfully Added";
 
     $dataform['products'] = $this->OrdersModel->get_all_products();
@@ -161,10 +174,22 @@ class Order extends CI_Controller{
 
      }*/
 
+     /**
+      * Delete Order by ID
+      * @param  [int] $id [Order ID]
+      * @return [boolean] [true false]
+      */
+
      public function delete($id) {
        $this->OrdersModel->delete_order($id);
        redirect( base_url() . 'index.php/order');
      }
+
+     /**
+      * Delete Orderline by ID
+      * @param  [int] $id [Orderline ID]
+      * @return [boolean] [true false]
+      */
      public function deleteorderitem($orderid, $orderlineid) {
        $this->OrdersModel->delete_order_item($orderlineid);
        redirect( base_url() . 'index.php/order/view/' . $orderid);

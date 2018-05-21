@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/**
+ * Product Controller
+ */
 class Products extends CI_Controller{
 
   public function __construct() {
@@ -67,16 +70,29 @@ class Products extends CI_Controller{
 
     $this->load->model('ProductsModel', 'ProductsModel');
   }
+  /**
+   * Get All Products with Selected Informations
+   * @return [array] [All Products with all Informations]
+   */
   function index()  {
     $data['all_products']= $this->ProductsModel->get_all_products();
     $data['page_title'] = "Products";
     $this->load->view('main/products/products',$data);
   }
 
+    /**
+     * Showing Detailed Informations of Product
+     * @param  [int] $id [Product ID]
+     * @return [array]     [Product Informations in Array]
+     */
   public function view($id) {
     $data['product'] = $this->ProductsModel->get_product($id);
     $this->load->view('main/products/single-product', $data);
   }
+
+  /**
+   * Adding new product
+   */
   public function add() {
     $this->load->helper(array('form', 'url'));
     $this->load->library('form_validation');
@@ -112,6 +128,11 @@ class Products extends CI_Controller{
     }
   }
 
+  /**
+   * Edit Product by ID
+   * @param  [int] $id [Product ID]
+   * @return [boolean]  true/false
+   */
   public function edit($id) {
     $this->load->helper(array('form', 'url'));
     $this->load->library('form_validation');
@@ -149,6 +170,11 @@ class Products extends CI_Controller{
 
   }
 
+  /**
+   * Delete Product by ID
+   * @param  [int] $id [Product ID]
+   * @return [boolean]  True/False
+   */
   public function delete($id) {
     $data['product'] = $this->ProductsModel->get_product($id);
     $this->ProductsModel->delete_product($id);

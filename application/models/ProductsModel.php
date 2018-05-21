@@ -8,16 +8,22 @@ class ProductsModel extends CI_Model{
     parent::__construct();
     $this->load->database();
   }
-  // Get all Products form Database with all fields
+  /**
+   * Get all Products form Database with all fields
+   * @return [array]
+   */
   public function get_all_products() {
 		$query = $this->db->query('SELECT *, product.id as p_id, categories.name as cat_name, product.name as p_name FROM product LEFT OUTER JOIN categories ON product.category_id = categories.id');
     return $query->result_array();
   }
 
-  // Get Product Informations by ID
+  /**
+   * Get Product Informations by ID
+   * @param  integer $id [product id]
+   * @return [array]
+   */
   public function get_product($id = 0)  {
     if ($id===0) {
-      //$query = $this->db->get('product');
       $query = $this->db->query('SELECT * FROM product LEFT OUTER JOIN categories ON product.id = categories.id');
       return $query->result_array();
     } else {
@@ -26,13 +32,18 @@ class ProductsModel extends CI_Model{
     }
   }
 
-  //Get All Product Categories from Database
+  /**
+   * Get Product Categories Informations by ID
+   * @return [array]
+   */
   public function get_all_product_categories() {
     $query = $this->db->query('SELECT id, name FROM categories');
     return $query->result_array();
   }
 
-  //Add New Product
+  /**
+   * Adding new Product
+   */
   public function add_product() {
     $this->load->helper('url');
     $newproduct = array(
@@ -43,7 +54,11 @@ class ProductsModel extends CI_Model{
     return $this->db->insert('product', $newproduct);
   }
 
-  //Save Changes
+  /**
+   * Edit and Save Changes for a Product
+   * @param  [int] $id [product id]
+   * @return [boolean] true/false
+   */
   public function edit_product($id) {
     $this->load->helper('url');
     $product = array(
@@ -62,6 +77,11 @@ class ProductsModel extends CI_Model{
     }
   }
 
+    /**
+     * Delete product by id
+     * @param  [int] $id [product id]
+     * @return [boolean]  True/False
+     */
   public function delete_product($id) {
     $this->db->where('id', $id);
     return $this->db->delete('product');

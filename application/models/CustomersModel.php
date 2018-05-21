@@ -8,17 +8,24 @@ class CustomersModel extends CI_Model{
     parent::__construct();
     $this->load->database();
   }
-  // Get all Products form Database with all fields
+
+  /**
+   * Get all Customers form Database with all fields
+   * @return [array]
+   */
   public function get_all_customers() {
 		$query = $this->db->query('SELECT * FROM customer');
     return $query->result_array();
   }
 
 
-  // Get Customers Informations by ID
+  /**
+   * Get Customer Informations by ID
+   * @param  integer $id [customer id]
+   * @return [array]
+   */
   public function get_customer($id = 0)  {
     if ($id===0) {
-      //$query = $this->db->get('customer');
       $query = $this->db->query('SELECT * FROM customer');
       return $query->result_array();
     } else {
@@ -26,15 +33,10 @@ class CustomersModel extends CI_Model{
       return $query->row_array();
     }
   }
-  /*
 
-  //Get All Product Categories from Database
-  public function get_all_customer_categories() {
-    $query = $this->db->query('SELECT id, name FROM categories');
-    return $query->result_array();
-  } */
-
-  //Add New Product
+  /**
+  * Adding new Customer
+  */
   public function add_customer() {
     $this->load->helper('url');
     $newcustomer = array(
@@ -45,7 +47,11 @@ class CustomersModel extends CI_Model{
     return $this->db->insert('customer', $newcustomer);
   }
 
-  //Save Changes
+  /**
+   * Edit and Saving Changes of Customer
+   * @param  integer $id [customer id]
+   * @return [boolean] true/false
+   */
   public function edit_customer($id) {
     $this->load->helper('url');
     $customer = array(
@@ -62,8 +68,6 @@ class CustomersModel extends CI_Model{
       'Address2' => $this->input->post('address2'),
       'Address3' => $this->input->post('address3'),
     );
-    //$this->db->where('CustomerID', $id);
-    //return $this->db->update('customer', $customer);
 
     if ($id === 0) {
       return false;
@@ -72,9 +76,14 @@ class CustomersModel extends CI_Model{
       return $this->db->update('customer', $customer);
     }
   }
-/*                                                                                             0                                                                                                                       0
+
+  /**
+   * Delete selected Customer
+   * @param  [int] $id [Cusotmer ID]
+   * @return [boolean] true/false
+   */
   public function delete_customer($id) {
     $this->db->where('id', $id);
     return $this->db->delete('customer');
-  } */
+  }
 }
