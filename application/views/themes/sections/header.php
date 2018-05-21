@@ -1,3 +1,5 @@
+<?php
+if (!$this->ion_auth->logged_in()) {	redirect('auth/login');	} ?>
 <!-- START HEADER -->
 <div class="header ">
   <!-- START MOBILE SIDEBAR TOGGLE -->
@@ -145,26 +147,22 @@
 				<span class="text-master"><?php  echo $user["last_name"]; ?></span>
 			<?php } ?>
     </div>
-    <!--
+
     <div class="dropdown pull-right hidden-md-down">
       <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="thumbnail-wrapper d32 circular inline">
-      <img src="<?php echo base_url() ?>template/pagesadmin/assets/img/profiles/avatar.jpg" alt="" data-src="<?php echo base_url() ?>template/pagesadmin/assets/img/profiles/avatar.jpg" data-src-retina="<?php echo base_url() ?>template/pagesadmin/assets/img/profiles/avatar.jpg" width="32" height="32">
+          <img src="<?php echo base_url() ?>template/pagesadmin/assets/img/profiles/avatar.jpg" alt="" data-src="<?php echo base_url() ?>template/pagesadmin/assets/img/profiles/avatar.jpg" data-src-retina="<?php echo base_url() ?>template/pagesadmin/assets/img/profiles/avatar.jpg" width="32" height="32"> -->
         </span>
       </button>
       <div class="dropdown-menu dropdown-menu-right profile-dropdown" role="menu">
-        <a href="#" class="dropdown-item"><i class="pg-settings_small"></i> Settings</a>
-        <a href="#" class="dropdown-item"><i class="pg-outdent"></i> Feedback</a>
-        <a href="#" class="dropdown-item"><i class="pg-signals"></i> Help</a>
         <a href="<?php echo base_url() ?>index.php/auth/logout" class="clearfix bg-master-lighter dropdown-item">
           <span class="pull-left">Logout</span>
           <span class="pull-right"><i class="pg-power"></i></span>
         </a>
       </div>
     </div>
-    -->
     <!-- END User Info-->
-    <!--<a href="#" class="header-icon pg pg-alt_menu btn-link m-l-10 sm-no-margin d-inline-block" data-toggle="quickview" data-toggle-element="#quickview"></a>-->
+    <a href="#" class="header-icon pg pg-alt_menu btn-link m-l-10 sm-no-margin d-inline-block" data-toggle="quickview" data-toggle-element="#quickview"></a>
   </div>
 </div>
 <!-- END HEADER -->

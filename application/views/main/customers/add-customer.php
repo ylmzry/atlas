@@ -34,7 +34,7 @@
 											</div>
 										<?php } ?>
 										<!-- End Form Validation Errors -->
-										
+
                     <?php echo form_open('customers/add'); ?>
                     <?php // <form class="" role="form" action=""> ?>
                       <div class="form-group form-group-default required ">
@@ -73,11 +73,7 @@
                         <label for=address3>Address Line 3</label>
                         <input type="address" class="form-control" name="address3">
                       </div>
-                      <div class="form-group form-group-default">
-                        <label for="logo">LOGO</label>
-                        <input type="file" class="form-control form-control-file" id="logo" name="logo">
-                      </div>
-
+                  
                       <button class="btn btn-primary" type="submit">Add Customer</button>
                       <button class="btn btn-secondary" type="Reset">Reset</button>
                     </form>
