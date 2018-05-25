@@ -19,35 +19,11 @@
 		 if (!$this->ion_auth->logged_in()) {	redirect('auth/login');	} ?>
       <!-- END JUMBOTRON -->
 			<!-- START CONTAINER FLUID -->
-			<div class="container-fluid p-l-25 p-r-25 p-t-0 p-b-25 sm-padding-10" style="display: none">
+			<div class="container-fluid p-l-25 p-r-25 p-t-0 p-b-25 sm-padding-10" style="">
 				<!-- START ROW -->
 				<div class="row">
 					<div class="col-lg-3 col-sm-6  d-flex flex-column">
-						<!-- START WIDGET widget_map_sales-->
-						<!-- START ITEM -->
-						<div class="card social-card share  full-width m-b-10 no-border" data-social="item">
-							<div class="card-header ">
-								<h5 class="text-primary pull-left fs-12">Update <i
-							class="fa fa-circle text-complete fs-11"></i></h5>
-								<div class="pull-right small hint-text">
-									5,345 <i class="fa fa-comment-o"></i>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<div class="card-description">
-								<h3>page dashboard Version 3.0 now release with limitless layout possibilities</h3>
-							</div>
-							<div class="card-footer clearfix">
-								<div class="pull-left">via <span class="text-complete">Pages</span>
-								</div>
-								<div class="pull-right hint-text">
-									July 23
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-						<!-- END ITEM -->
-						<!-- END WIDGET -->
+
 						<!-- START WIDGET widget_weekly_sales_card-->
 						<div class="card no-border widget-loader-bar m-b-10">
 							<div class="container-xs-height full-height">
@@ -55,7 +31,7 @@
 									<div class="col-xs-height col-top">
 										<div class="card-header  top-left top-right">
 											<div class="card-title">
-												<span class="font-montserrat fs-11 all-caps">Weekly Sales <i class="fa fa-chevron-right"></i>
+												<span class="font-montserrat fs-11 all-caps">Page Visits <i class="fa fa-chevron-right"></i>
 														</span>
 											</div>
 											<div class="card-controls">
@@ -70,9 +46,9 @@
 								<div class="row-xs-height">
 									<div class="col-xs-height col-top">
 										<div class="p-l-20 p-t-50 p-b-40 p-r-20">
-											<h3 class="no-margin p-b-5">$24,000</h3>
-											<span class="small hint-text pull-left">71% of total goal</span>
-											<span class="pull-right small text-primary">$23,000</span>
+											<h3 class="no-margin p-b-5">423</h3>
+											<span class="small hint-text pull-left">22% higher</span>
+											<span class="pull-right small text-danger">$23,000</span>
 										</div>
 									</div>
 								</div>
@@ -80,7 +56,87 @@
 									<div class="col-xs-height col-bottom">
 										<div class="progress progress-small m-b-0">
 											<!-- START BOOTSTRAP PROGRESS (http://getbootstrap.com/components/#progress) -->
-											<div class="progress-bar progress-bar-primary" style="width:71%"></div>
+											<div class="progress-bar progress-bar-danger" style="width:15%"></div>
+											<!-- END BOOTSTRAP PROGRESS -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END WIDGET -->
+						<!-- START WIDGET widget_weekly_sales_card-->
+						<div class="card no-border widget-loader-bar m-b-10">
+							<div class="container-xs-height full-height">
+								<div class="row-xs-height">
+									<div class="col-xs-height col-top">
+										<div class="card-header  top-left top-right">
+											<div class="card-title">
+												<span class="font-montserrat fs-11 all-caps">Page Visits <i class="fa fa-chevron-right"></i>
+														</span>
+											</div>
+											<div class="card-controls">
+												<ul>
+													<li><a href="#" class="portlet-refresh text-black" data-toggle="refresh"><i class="portlet-icon portlet-icon-refresh"></i></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row-xs-height">
+									<div class="col-xs-height col-top">
+										<div class="p-l-20 p-t-50 p-b-40 p-r-20">
+											<h3 class="no-margin p-b-5">423</h3>
+											<span class="small hint-text pull-left">22% higher</span>
+											<span class="pull-right small text-danger">$23,000</span>
+										</div>
+									</div>
+								</div>
+								<div class="row-xs-height">
+									<div class="col-xs-height col-bottom">
+										<div class="progress progress-small m-b-0">
+											<!-- START BOOTSTRAP PROGRESS (http://getbootstrap.com/components/#progress) -->
+											<div class="progress-bar progress-bar-danger" style="width:15%"></div>
+											<!-- END BOOTSTRAP PROGRESS -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- END WIDGET -->
+						<!-- START WIDGET widget_weekly_sales_card-->
+						<div class="card no-border widget-loader-bar m-b-10">
+							<div class="container-xs-height full-height">
+								<div class="row-xs-height">
+									<div class="col-xs-height col-top">
+										<div class="card-header  top-left top-right">
+											<div class="card-title">
+												<span class="font-montserrat fs-11 all-caps">Page Visits <i class="fa fa-chevron-right"></i>
+														</span>
+											</div>
+											<div class="card-controls">
+												<ul>
+													<li><a href="#" class="portlet-refresh text-black" data-toggle="refresh"><i class="portlet-icon portlet-icon-refresh"></i></a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row-xs-height">
+									<div class="col-xs-height col-top">
+										<div class="p-l-20 p-t-50 p-b-40 p-r-20">
+											<h3 class="no-margin p-b-5">423</h3>
+											<span class="small hint-text pull-left">22% higher</span>
+											<span class="pull-right small text-danger">$23,000</span>
+										</div>
+									</div>
+								</div>
+								<div class="row-xs-height">
+									<div class="col-xs-height col-bottom">
+										<div class="progress progress-small m-b-0">
+											<!-- START BOOTSTRAP PROGRESS (http://getbootstrap.com/components/#progress) -->
+											<div class="progress-bar progress-bar-danger" style="width:15%"></div>
 											<!-- END BOOTSTRAP PROGRESS -->
 										</div>
 									</div>
@@ -129,439 +185,17 @@
 						</div>
 						<!-- END WIDGET -->
 					</div>
-					<div class="col-lg-3 col-sm-6  d-flex flex-column">
-						<!-- START ITEM -->
-						<div class="card social-card share  full-width m-b-10 no-border" data-social="item">
-							<div class="card-header clearfix">
-								<h5 class="text-success pull-left fs-12">Stock Market <i
-							class="fa fa-circle text-success fs-11"></i></h5>
-								<div class="pull-right small hint-text">
-									5,345 <i class="fa fa-comment-o"></i>
-								</div>
-								<div class="clearfix"></div>
-							</div>
-							<div class="card-description">
-								<h5 class='hint-text no-margin'>Apple Inc.</h5>
-								<h5 class="small hint-text no-margin">NASDAQ: AAPL - Nov 13 8:37 AM ET</h5>
-								<h3 class="m-b-0">111.25 <span class="text-success"><i class="fa fa-sort-up small text-success"></i> 0.15</span>
-					</h3>
-							</div>
-							<div class="card-footer clearfix">
-								<div class="pull-left">by <span class="text-success">John Smith</span>
-								</div>
-								<div class="pull-right hint-text">
-									Apr 23
-								</div>
-								<div class="clearfix"></div>
-							</div>
-						</div>
-						<!-- END ITEM -->
-						<!-- START ITEM -->
-						<div class="card social-card share share-other full-width m-b-10 d-flex flex-1 full-height no-border sm-vh-75" data-social="item">
-							<div class="circle" data-toggle="tooltip" title="Label" data-container="body">
-							</div>
-							<div class="card-content flex-1" data-pages-bg-image="assets/img/social_new.jpg">
-								<ul class="buttons ">
-									<li>
-										<a href="#"><i class="fa fa-expand"></i>
-							</a>
-									</li>
-									<li>
-										<a href="#"><i class="fa fa-heart-o"></i>
-							</a>
-									</li>
-								</ul>
-							</div>
-							<div class="card-description">
-								<p><a href="#">#TBT</a> :D</p>
-							</div>
-							<div class="card-footer clearfix">
-								<div class="time">few seconds ago</div>
-								<ul class="reactions">
-									<li><a href="#">5,345 <i class="fa fa-comment-o"></i></a>
-									</li>
-									<li><a href="#">23K <i class="fa fa-heart-o"></i></a>
-									</li>
-								</ul>
-							</div>
-							<div class="card-header clearfix">
-								<div class="user-pic">
-									<img alt="Avatar" width="33" height="33" data-src-retina="assets/img/profiles/avatar_small2x.jpg" data-src="assets/img/profiles/avatar.jpg" src="assets/img/profiles/avatar_small2x.jpg">
-								</div>
-								<h5>David Nester</h5>
-								<h6>Shared a link on your wall</h6>
-							</div>
-						</div>
-						<!-- END ITEM -->
-					</div>
-					<div class="col-lg-6 m-b-10 d-flex">
-						<!-- START WIDGET widget_pendingComments.tpl-->
-						<div class="widget-11-2 card no-border card-condensed no-margin widget-loader-circle align-self-stretch d-flex flex-column">
-							<div class="card-header top-right">
-								<div class="card-controls">
-									<ul>
-										<li><a data-toggle="refresh" class="portlet-refresh text-black" href="#"><i
-								class="portlet-icon portlet-icon-refresh"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="padding-25">
-								<div class="pull-left">
-									<h2 class="text-success no-margin">webarch</h2>
-									<p class="no-margin">Today's sales</p>
-								</div>
-								<h3 class="pull-right semi-bold"><sup>
-					<small class="semi-bold">$</small>
-				</sup> 102,967
-				</h3>
-								<div class="clearfix"></div>
-							</div>
-							<div class="auto-overflow widget-11-2-table">
-								<table class="table table-condensed table-hover">
-									<tbody>
-										<tr>
-											<td class="font-montserrat all-caps fs-12 w-50">Purchase CODE #2345</td>
-											<td class="text-right hidden-lg">
-												<span class="hint-text small">dewdrops</span>
-											</td>
-											<td class="text-right b-r b-dashed b-grey w-25">
-												<span class="hint-text small">Qty 1</span>
-											</td>
-											<td class="w-25">
-												<span class="font-montserrat fs-18">$27</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="font-montserrat all-caps fs-12 w-50">Purchase CODE #2345</td>
-											<td class="text-right hidden-lg">
-												<span class="hint-text small">dewdrops</span>
-											</td>
-											<td class="text-right b-r b-dashed b-grey w-25">
-												<span class="hint-text small">Qty 1</span>
-											</td>
-											<td class="w-25">
-												<span class="font-montserrat fs-18">$27</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="font-montserrat all-caps fs-12 w-50">Purchase CODE #2345</td>
-											<td class="text-right hidden-lg">
-												<span class="hint-text small">dewdrops</span>
-											</td>
-											<td class="text-right b-r b-dashed b-grey w-25">
-												<span class="hint-text small">Qty 1</span>
-											</td>
-											<td class="w-25">
-												<span class="font-montserrat fs-18">$27</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="font-montserrat all-caps fs-12 w-50">Purchase CODE #2345</td>
-											<td class="text-right hidden-lg">
-												<span class="hint-text small">dewdrops</span>
-											</td>
-											<td class="text-right b-r b-dashed b-grey w-25">
-												<span class="hint-text small">Qty 1</span>
-											</td>
-											<td class="w-25">
-												<span class="font-montserrat fs-18">$27</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="font-montserrat all-caps fs-12 w-50">Purchase CODE #2345</td>
-											<td class="text-right hidden-lg">
-												<span class="hint-text small">dewdrops</span>
-											</td>
-											<td class="text-right b-r b-dashed b-grey w-25">
-												<span class="hint-text small">Qty 1</span>
-											</td>
-											<td class="w-25">
-												<span class="font-montserrat fs-18">$27</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="font-montserrat all-caps fs-12 w-50">Purchase CODE #2345</td>
-											<td class="text-right hidden-lg">
-												<span class="hint-text small">dewdrops</span>
-											</td>
-											<td class="text-right b-r b-dashed b-grey w-25">
-												<span class="hint-text small">Qty 1</span>
-											</td>
-											<td class="w-25">
-												<span class="font-montserrat fs-18">$27</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="font-montserrat all-caps fs-12 w-50">Purchase CODE #2345</td>
-											<td class="text-right hidden-lg">
-												<span class="hint-text small">dewdrops</span>
-											</td>
-											<td class="text-right b-r b-dashed b-grey w-25">
-												<span class="hint-text small">Qty 1</span>
-											</td>
-											<td class="w-25">
-												<span class="font-montserrat fs-18">$27</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="font-montserrat all-caps fs-12 w-50">Purchase CODE #2345</td>
-											<td class="text-right hidden-lg">
-												<span class="hint-text small">dewdrops</span>
-											</td>
-											<td class="text-right b-r b-dashed b-grey w-25">
-												<span class="hint-text small">Qty 1</span>
-											</td>
-											<td class="w-25">
-												<span class="font-montserrat fs-18">$27</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="font-montserrat all-caps fs-12 w-50">Purchase CODE #2345</td>
-											<td class="text-right hidden-lg">
-												<span class="hint-text small">dewdrops</span>
-											</td>
-											<td class="text-right b-r b-dashed b-grey w-25">
-												<span class="hint-text small">Qty 1</span>
-											</td>
-											<td class="w-25">
-												<span class="font-montserrat fs-18">$27</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="font-montserrat all-caps fs-12 w-50">Purchase CODE #2345</td>
-											<td class="text-right hidden-lg">
-												<span class="hint-text small">dewdrops</span>
-											</td>
-											<td class="text-right b-r b-dashed b-grey w-25">
-												<span class="hint-text small">Qty 1</span>
-											</td>
-											<td class="w-25">
-												<span class="font-montserrat fs-18">$27</span>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<div class="padding-25 mt-auto">
-								<p class="small no-margin">
-									<a href="#"><i class="fa fs-16 fa-arrow-circle-o-down text-success m-r-10"></i></a>
-									<span class="hint-text ">Show more details of APPLE . INC</span>
-								</p>
-							</div>
-						</div>
-						<!-- END WIDGET -->
-					</div>
+
+
 				</div>
 				<!-- END ROW -->
 				<!-- START ROW -->
 				<div class="row">
 					<div class="col-lg-4 md-m-b-10">
-						<!-- START WIDGET widget_pendingComments.tpl-->
-						<div class=" card no-border  no-margin widget-loader-circle todolist-widget pending-projects-widget">
-							<div class="card-header ">
-								<div class="card-title">
-									<span class="font-montserrat fs-11 all-caps">
-							Recent projects <i class="fa fa-chevron-right"></i>
-					</span>
-								</div>
-								<div class="card-controls">
-									<ul>
-										<li><a href="#" class="card-refresh text-black" data-toggle="refresh"><i
-		class="card-icon card-icon-refresh"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="card-block">
-								<h5 class="">Ongoing projects at <span class="semi-bold">pages</span></h5>
-								<ul class="nav nav-tabs nav-tabs-simple m-b-20" role="tablist" data-init-reponsive-tabs="collapse">
-									<li class="nav-item"><a href="#pending" class="active" data-toggle="tab" role="tab" aria-expanded="true">Pending</a>
-									</li>
-									<li class="nav-item"><a href="#completed" data-toggle="tab" role="tab" aria-expanded="false">Completed</a>
-									</li>
-								</ul>
-								<div class="tab-content no-padding">
-									<div class="tab-pane active" id="pending">
-										<div class="p-t-15">
-											<div class="d-flex">
-												<span class="icon-thumbnail bg-master-light pull-left text-master">ws</span>
-												<div class="flex-1 full-width overflow-ellipsis">
-													<p class="hint-text all-caps font-montserrat  small no-margin overflow-ellipsis ">Revox Ltd
-													</p>
-													<h5 class="no-margin overflow-ellipsis ">Marketing Campaign for revox</h5>
-												</div>
-											</div>
-											<div class="m-t-15">
-												<p class="hint-text fade small pull-left">71% compleated from total</p>
-												<a href="#" class="pull-right text-master"><i class="pg-more"></i></a>
-												<div class="clearfix"></div>
-											</div>
-											<div class="progress progress-small m-b-15 m-t-10">
-												<!-- START BOOTSTRAP PROGRESS (http://getbootstrap.com/components/#progress) -->
-												<div class="progress-bar progress-bar-info" style="width:71%"></div>
-												<!-- END BOOTSTRAP PROGRESS -->
-											</div>
-										</div>
-										<div class="p-t-15">
-											<div class="d-flex">
-												<span class="icon-thumbnail bg-warning-light pull-left text-master">cr</span>
-												<div class="flex-1 full-width overflow-ellipsis">
-													<p class="hint-text all-caps font-montserrat  small no-margin overflow-ellipsis ">Nike Ltd
-													</p>
-													<h5 class="no-margin overflow-ellipsis ">Corporate rebranding</h5>
-												</div>
-											</div>
-											<div class="m-t-15">
-												<p class="hint-text fade small pull-left">20% compleated from total</p>
-												<a href="#" class="pull-right text-master"><i class="pg-more"></i></a>
-												<div class="clearfix"></div>
-											</div>
-											<div class="progress progress-small m-b-15 m-t-10">
-												<!-- START BOOTSTRAP PROGRESS (http://getbootstrap.com/components/#progress) -->
-												<div class="progress-bar progress-bar-warning" style="width:20%"></div>
-												<!-- END BOOTSTRAP PROGRESS -->
-											</div>
-										</div>
-										<a href="#" class="btn btn-block m-t-30">See all projects</a>
-									</div>
-									<div class="tab-pane" id="completed">
-										<div class="p-t-15">
-											<div class="d-flex">
-												<span class="icon-thumbnail bg-master-light pull-left text-master">ws</span>
-												<div class="flex-1 full-width overflow-ellipsis">
-													<p class="hint-text all-caps font-montserrat  small no-margin overflow-ellipsis ">Apple Corp
-													</p>
-													<h5 class="no-margin overflow-ellipsis ">Marketing Campaign for revox</h5>
-												</div>
-												<div class="clearfix"></div>
-											</div>
-											<div class="m-t-15">
-												<p class="hint-text fade small pull-left">45% compleated from total</p>
-												<a href="#" class="pull-right text-master"><i class="pg-more"></i></a>
-												<div class="clearfix"></div>
-											</div>
-											<div class="progress progress-small m-b-15 m-t-10">
-												<!-- START BOOTSTRAP PROGRESS (http://getbootstrap.com/components/#progress) -->
-												<div class="progress-bar progress-bar-info" style="width:45%"></div>
-												<!-- END BOOTSTRAP PROGRESS -->
-											</div>
-										</div>
-										<div class="p-t-15">
-											<div class="d-flex">
-												<span class="icon-thumbnail bg-warning-light pull-left text-master">cr</span>
-												<div class="flex-1 full-width overflow-ellipsis">
-													<p class="hint-text all-caps font-montserrat  small no-margin overflow-ellipsis ">Yahoo Inc
-													</p>
-													<h5 class="no-margin overflow-ellipsis ">Corporate rebranding</h5>
-												</div>
-												<div class="clearfix"></div>
-											</div>
-											<div class="m-t-25">
-												<p class="hint-text fade small pull-left">20% compleated from total</p>
-												<a href="#" class="pull-right text-master"><i class="pg-more"></i></a>
-												<div class="clearfix"></div>
-											</div>
-											<div class="progress progress-small m-b-15 m-t-10">
-												<!-- START BOOTSTRAP PROGRESS (http://getbootstrap.com/components/#progress) -->
-												<div class="progress-bar progress-bar-warning" style="width:20%"></div>
-												<!-- END BOOTSTRAP PROGRESS -->
-											</div>
-										</div>
-										<a href="#" class="btn btn-block m-t-30">See all projects</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- END WIDGET -->
+
 					</div>
 					<div class="col-lg-8 sm-m-t-10">
-						<!-- START WIDGET widget_mapWidget-->
-						<div class="widget-13 card no-border  no-margin widget-loader-circle">
-							<div class="card-header  pull-up top-right ">
-								<div class="card-controls">
-									<ul>
-										<li><a href="#" class="card-refresh text-black" data-toggle="refresh"><i class="card-icon card-icon-refresh"></i></a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="container-sm-height no-overflow">
-								<div class="row row-sm-height">
-									<div class="col-sm-5 col-lg-4 col-xlg-3 col-sm-height col-top no-padding">
-										<div class="card-header  ">
-											<div class="card-title">Menu clipping
-											</div>
-										</div>
-										<div class="card-block">
-											<ul class="nav nav-pills m-t-5 m-b-15" role="tablist">
-												<li class="active">
-													<a href="#tab1" data-toggle="tab" role="tab" class="b-a b-grey text-master">
-																				fb
-																		</a>
-												</li>
-												<li>
-													<a href="#tab2" data-toggle="tab" role="tab" class="b-a b-grey text-master">
-																				js
-																		</a>
-												</li>
-												<li>
-													<a href="#tab3" data-toggle="tab" role="tab" class="b-a b-grey text-master">
-																				sa
-																		</a>
-												</li>
-											</ul>
-											<div class="tab-content">
-												<div class="tab-pane active" id="tab1">
-													<h3>Facebook</h3>
-													<p class="hint-text all-caps font-montserrat small no-margin ">Views</p>
-													<p class="all-caps font-montserrat  no-margin text-success ">14,256</p>
-													<br>
-													<p class="hint-text all-caps font-montserrat small no-margin ">Today</p>
-													<p class="all-caps font-montserrat  no-margin text-warning ">24</p>
-													<br>
-													<p class="hint-text all-caps font-montserrat small no-margin ">Week</p>
-													<p class="all-caps font-montserrat  no-margin text-success ">56</p>
-												</div>
-												<div class="tab-pane " id="tab2">
-													<h3>Google</h3>
-													<p class="hint-text all-caps font-montserrat small no-margin ">Views</p>
-													<p class="all-caps font-montserrat  no-margin text-success ">14,256</p>
-													<br>
-													<p class="hint-text all-caps font-montserrat small no-margin ">Today</p>
-													<p class="all-caps font-montserrat  no-margin text-warning ">24</p>
-													<br>
-													<p class="hint-text all-caps font-montserrat small no-margin ">Week</p>
-													<p class="all-caps font-montserrat  no-margin text-success ">56</p>
-												</div>
-												<div class="tab-pane" id="tab3">
-													<h3>Amazon</h3>
-													<p class="hint-text all-caps font-montserrat small no-margin ">Views</p>
-													<p class="all-caps font-montserrat  no-margin text-success ">14,256</p>
-													<br>
-													<p class="hint-text all-caps font-montserrat small no-margin ">Today</p>
-													<p class="all-caps font-montserrat  no-margin text-warning ">24</p>
-													<br>
-													<p class="hint-text all-caps font-montserrat small no-margin ">Week</p>
-													<p class="all-caps font-montserrat  no-margin text-success ">56</p>
-												</div>
-											</div>
-										</div>
-										<div class="bg-master-light p-l-20 p-r-20 p-t-10 p-b-10 pull-bottom full-width hidden-xs">
-											<p class="no-margin">
-												<a href="#"><i class="fa fa-arrow-circle-o-down text-success"></i></a>
-												<span class="hint-text">Super secret options</span>
-											</p>
-										</div>
-									</div>
-									<div class="col-sm-7 col-lg-8 col-xlg-9 col-sm-height col-top no-padding relative">
-										<div class="bg-success widget-13-map">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- END WIDGET -->
+
 					</div>
 				</div>
 				<!-- END ROW -->

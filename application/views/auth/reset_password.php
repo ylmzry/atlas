@@ -57,6 +57,7 @@
 
           <p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
 
+        
         </div>
       </div>
 

@@ -60,6 +60,12 @@
           <?php echo form_submit('submit', lang('change_password_submit_btn'));?>
           <?php echo form_close();?>
 
+          <p><a href="http://localhost/atlas/index.php/auth/">Return to User Management</a> <a href="http://localhost/atlas/index.php/">Return to Home</a></p>
+
+
+          <p><a href="<?php echo base_url() ?>index.php/auth/logout" class="clearfix bg-master-lighter dropdown-item">
+                      <span class="pull-left">Logout</span>
+                    </a></p>
         </div>
       </div>
 

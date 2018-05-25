@@ -44,6 +44,7 @@
           <?php echo form_submit('submit', lang('forgot_password_submit_btn'));?>
           <?php echo form_close();?>
 
+          
         </div>
       </div>
 
