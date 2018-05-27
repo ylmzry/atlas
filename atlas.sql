@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 10, 2018 at 10:27 PM
+-- Generation Time: May 27, 2018 at 10:52 PM
 -- Server version: 5.7.19
 -- PHP Version: 7.1.9
 
@@ -50,16 +50,17 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `name` varchar(100) NOT NULL,
   `description` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`) VALUES
-(2, 'Test Category 2', 'CAt desc 2 asdkja dj ajs djajsd jasd asas'),
-(3, 'Test Category 3', 'CAt desc 3'),
-(4, 'Cell Phones', 'Cell Phones');
+(4, 'Smartphones', 'Smartphones'),
+(5, 'Notebook', 'Notebook, Ultrabook, Mobile Workstations'),
+(6, 'TV Audio', 'DIO Aktuelle Angebote Fernseher AV-Receiver AirPlay- & Bluetooth-Audio DJ, Musik & Recording DVD & Blu-ray Diktiergeräte & Mikrofone E-Book-Reader Heimkino-Systeme HiFi-Komponenten Kabel & Adapter Kop'),
+(7, 'PC', 'All in One & Desktop PCs');
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `Address3` varchar(200) NOT NULL,
   `RegistrationDate` date NOT NULL,
   PRIMARY KEY (`CustomerID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
@@ -91,8 +92,9 @@ CREATE TABLE IF NOT EXISTS `customer` (
 
 INSERT INTO `customer` (`CustomerID`, `Name`, `Surname`, `Company`, `Logo`, `Email`, `Tel`, `Tel2`, `Fax`, `Address`, `Address2`, `Address3`, `RegistrationDate`) VALUES
 (1, 'WIFI', 'WIFI ', 'WIFI', '', 'wifi@wifi.at', '123456789', '12345678', '1234567', 'Adresse', 'Adresse LIne 2', 'ADressen Line 3', '2018-04-24'),
-(2, 'Steve', 'Jobs', 'Apple', '', 'apple@apple.at', '12341234', '', '213123', '23123', '123123', '123123', '0000-00-00'),
-(5, 'Eray', 'Eray', 'Eray', '', 'asdasd@askd.at', '123123123', '', 'asdqasd', 'asdasd', 'dasdasd', 'dasdasd', '0000-00-00');
+(7, 'Mag Barbara', 'Schieder', 'WIFI Wien', '', 'kluger-schieder@wifiwien.at', '01 476 77 5105', '', '01 476 77 5588', '1180 Wien Waehringer Geurtel 9', '', '', '0000-00-00'),
+(8, 'Thomas', 'Lichtblau', 'BIPA GmbH ', '', '', '', '', '', '', '', '', '0000-00-00'),
+(9, 'Robert', 'Zadrazil', 'BANK AUSTRIA', '', '', '', '', '', '', '', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -106,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `name` varchar(20) NOT NULL,
   `description` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `groups`
@@ -114,7 +116,8 @@ CREATE TABLE IF NOT EXISTS `groups` (
 
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 (1, 'admin', 'Administrator'),
-(2, 'members', 'General User');
+(2, 'members', 'General User'),
+(3, 'WIFI', 'This Group contains users from WIFI');
 
 -- --------------------------------------------------------
 
@@ -129,50 +132,7 @@ CREATE TABLE IF NOT EXISTS `login_attempts` (
   `login` varchar(100) NOT NULL,
   `time` int(11) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `order`
---
-
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE IF NOT EXISTS `order` (
-  `OrderID` int(11) NOT NULL AUTO_INCREMENT,
-  `CustomerID` int(11) NOT NULL,
-  `OrderStatusID` int(11) DEFAULT NULL,
-  `UserID` int(11) DEFAULT NULL,
-  `OrderDate` date NOT NULL,
-  PRIMARY KEY (`OrderID`),
-  KEY `OrderStatusID` (`OrderStatusID`),
-  KEY `CustomerID` (`CustomerID`),
-  KEY `UserID` (`UserID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `order`
---
-
-INSERT INTO `order` (`OrderID`, `CustomerID`, `OrderStatusID`, `UserID`, `OrderDate`) VALUES
-(1, 5, NULL, NULL, '2018-05-10'),
-(2, 5, NULL, NULL, '2018-05-10'),
-(3, 2, NULL, NULL, '2010-05-18'),
-(4, 2, NULL, NULL, '2010-05-18'),
-(5, 5, NULL, NULL, '2010-05-18'),
-(6, 2, NULL, NULL, '2010-05-18'),
-(7, 2, NULL, NULL, '2010-05-18'),
-(8, 5, NULL, NULL, '2010-05-18'),
-(9, 1, NULL, NULL, '2010-05-18'),
-(10, 1, NULL, NULL, '2010-05-18'),
-(11, 1, NULL, NULL, '2010-05-18'),
-(12, 1, NULL, NULL, '2010-05-18'),
-(13, 2, NULL, NULL, '2010-05-18'),
-(14, 2, NULL, NULL, '2010-05-18'),
-(15, 2, NULL, NULL, '2010-05-18'),
-(16, 2, NULL, NULL, '2010-05-18'),
-(17, 5, NULL, NULL, '2010-05-18'),
-(18, 5, NULL, NULL, '2010-05-18');
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -190,7 +150,41 @@ CREATE TABLE IF NOT EXISTS `orderline` (
   PRIMARY KEY (`OrderLineID`),
   KEY `OrderID` (`OrderID`),
   KEY `ProductID` (`ProductID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orderline`
+--
+
+INSERT INTO `orderline` (`OrderLineID`, `OrderID`, `ProductID`, `Quantity`, `TotalAmount`) VALUES
+(1, 1, 12, 1, '799'),
+(2, 1, 17, 1, '2999');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders` (
+  `OrderID` int(11) NOT NULL AUTO_INCREMENT,
+  `CustomerID` int(11) NOT NULL,
+  `OrderStatusID` int(11) DEFAULT NULL,
+  `UserID` int(11) DEFAULT NULL,
+  `OrderDate` date NOT NULL,
+  PRIMARY KEY (`OrderID`),
+  KEY `OrderStatusID` (`OrderStatusID`),
+  KEY `CustomerID` (`CustomerID`),
+  KEY `UserID` (`UserID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`OrderID`, `CustomerID`, `OrderStatusID`, `UserID`, `OrderDate`) VALUES
+(1, 9, NULL, NULL, '2018-05-27');
 
 -- --------------------------------------------------------
 
@@ -226,37 +220,29 @@ CREATE TABLE IF NOT EXISTS `product` (
   `price` decimal(10,0) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `category_id`, `price`) VALUES
-(3, '3', 2, '120'),
-(4, 'Test Product 4', 2, '123456'),
-(5, 'adfaf', 3, '12'),
-(6, 'asdasd', 4, '123');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `UserID` int(11) NOT NULL AUTO_INCREMENT,
-  `Username` varchar(200) NOT NULL,
-  `Password` varchar(200) NOT NULL,
-  `FirstName` varchar(200) NOT NULL,
-  `Lastname` varchar(200) NOT NULL,
-  `Email` varchar(200) NOT NULL,
-  `RoleID` int(11) NOT NULL,
-  `ProfileImageUrl` text NOT NULL,
-  PRIMARY KEY (`UserID`),
-  KEY `RoleID` (`RoleID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(7, 'Samsung GALAXY S8 orchid grey 64GB Android Smartphone', 4, '525'),
+(8, 'Samsung GALAXY A5', 4, '260'),
+(9, 'Samsung GALAXY S7 pink gold G930F', 4, '418'),
+(10, 'Samsung GALAXY S7 edge gold platinum G935F', 4, '471'),
+(11, 'ArtPC PULSE', 7, '1599'),
+(12, 'All in One', 7, '799'),
+(13, 'Samsung GALAXY A5', 4, '255'),
+(14, 'Class Q9FN QLED Smart 4K UHD TV ', 6, '3498'),
+(15, 'Class Q6FN QLED Smart 4K UHD TV ', 6, '1799'),
+(16, 'Class Q6F Special Edition QLED 4K TV', 6, '799'),
+(17, 'Class Q8C Curved QLED 4K TV', 6, '2999'),
+(18, 'Notebook 9 Pen 13', 5, '1399'),
+(19, 'Notebook 9 15', 5, '1399'),
+(20, 'Notebook 7 Spin', 5, '799'),
+(21, 'Notebook 7 spin 15', 5, '1399'),
+(22, 'Notebook 5', 5, '1099');
 
 -- --------------------------------------------------------
 
@@ -284,15 +270,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `company` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$08$lSKMVeYM7WKOg9UHdIfuE.h7UvcbQQ4B/gxH6rEG4gcG9OsIJ92G6', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1525977286, 1, 'Admin', 'istrator', 'ADMIN', '0'),
-(2, '::1', 'erayyilmaz@outlook.com', '$2y$08$NEsymqNhsU13SoI0mwqfIuEP6wUs05vgvgRfTfPfeprY3k8l.Vuxq', NULL, 'erayyilmaz@outlook.com', NULL, NULL, NULL, NULL, 1523196519, NULL, 1, 'Eray', 'Yilmaz', 'Atlas', '6766494269');
+(1, '127.0.0.1', 'administrator', '$2y$08$lSKMVeYM7WKOg9UHdIfuE.h7UvcbQQ4B/gxH6rEG4gcG9OsIJ92G6', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1527454696, 1, 'Eray', 'YIlmaz', 'T3K Forensics', '0676 649 42 69'),
+(2, '::1', 'erayyilmaz@outlook.com', '$2y$08$NEsymqNhsU13SoI0mwqfIuEP6wUs05vgvgRfTfPfeprY3k8l.Vuxq', NULL, 'erayyilmaz@outlook.com', NULL, NULL, NULL, NULL, 1523196519, NULL, 1, 'Eray', 'Yilmaz', 'Atlas', '6766494269'),
+(3, '::1', 'yilmaz@outlook.com', '$2y$08$yjZ4welMTumKvX/8j3tcEOjrHCGeMKYBLDZzwfTlCvmYisa64w2uC', NULL, 'yilmaz@outlook.com', NULL, NULL, NULL, NULL, 1527284633, NULL, 1, 'Eray', 'Yilmaz', 'T3K Forensics', '+436766494269');
 
 -- --------------------------------------------------------
 
@@ -309,16 +296,16 @@ CREATE TABLE IF NOT EXISTS `users_groups` (
   UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
   KEY `fk_users_groups_users1_idx` (`user_id`),
   KEY `fk_users_groups_groups1_idx` (`group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users_groups`
 --
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 2, 2);
+(7, 1, 1),
+(5, 2, 3),
+(6, 3, 2);
 
 --
 -- Constraints for dumped tables
@@ -331,19 +318,18 @@ ALTER TABLE `activity`
   ADD CONSTRAINT `activity_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `customer` (`CustomerID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`OrderStatusID`) REFERENCES `orderstatus` (`OrderStatusID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`CustomerID`) REFERENCES `customer` (`CustomerID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_ibfk_3` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `orderline`
 --
 ALTER TABLE `orderline`
-  ADD CONSTRAINT `orderline_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `order` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `orderline_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `orderline_ibfk_2` FOREIGN KEY (`ProductID`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`OrderStatusID`) REFERENCES `orderstatus` (`OrderStatusID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`CustomerID`) REFERENCES `customer` (`CustomerID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `product`
