@@ -83,7 +83,7 @@ class CustomersModel extends CI_Model{
    * @return [boolean] true/false
    */
   public function delete_customer($id) {
-    $this->db->where('id', $id);
+    $this->db->where('CustomerID', $id);
     return $this->db->delete('customer');
   }
 }

@@ -112,10 +112,9 @@ class Category extends CI_Controller{
       );
 
       $this->form_validation->set_rules(
-          'cdesc', 'Category Description', 'required|alpha_numeric_spaces',
+          'cdesc', 'Category Description', 'required',
            array(
-             'required'=>'Category Description is empty.',
-             'alpha_numeric_spaces'=>'Category Description contains something other than alpha-numeric characters or spaces.',
+             'required'=>'Category Description is empty.'
            )
       );
 
@@ -147,10 +146,9 @@ class Category extends CI_Controller{
          )
     );
     $this->form_validation->set_rules(
-      'cdesc', 'Category Description', 'required|alpha_numeric_spaces',
+      'cdesc', 'Category Description', 'required',
        array(
-         'required'=>'Category Description is empty.',
-         'alpha_numeric_spaces'=>'Category Description contains something other than alpha-numeric characters or spaces.',
+         'required'=>'Category Description is empty.'
        )
     );
 

@@ -115,7 +115,7 @@
                             <option value="0">Please select...</option>
                             <?php
                               foreach ($customers as $customer) {
-                                echo '<option value="'.$customer["CustomerID"].'">'.$customer["Name"].'</option>';
+                                echo '<option value="'.$customer["CustomerID"].'">'.$customer["Company"].'</option>';
                               }
                               ?>
                           </select>

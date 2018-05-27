@@ -108,17 +108,15 @@ class Customers extends CI_Controller{
            )
       );
       $this->form_validation->set_rules(
-          'name', 'Name', 'required|alpha_numeric_spaces',
+          'name', 'Name', 'required',
            array(
-             'required'=>'Name is empty.',
-             'alpha_numeric_spaces'=>'Name contains something other than alpha-numeric characters or spaces.',
+             'required'=>'Name is empty.'
            )
       );
       $this->form_validation->set_rules(
-          'surname', 'Surname', 'required|alpha_numeric_spaces',
+          'surname', 'Surname', 'required',
            array(
-             'required'=>'Surname is empty.',
-             'alpha_numeric_spaces'=>'Surname contains something other than alpha-numeric characters or spaces.',
+             'required'=>'Surname is empty.'
            )
       );
       $this->form_validation->set_rules(
@@ -221,7 +219,7 @@ class Customers extends CI_Controller{
   public function delete($id) {
     $data['customer'] = $this->CustomersModel->get_customer($id);
     $this->CustomersModel->delete_customer($id);
-    redirect( base_url() . 'index.php/customers/customers');
+    redirect( base_url() . 'index.php/customers');
   }
 
 }

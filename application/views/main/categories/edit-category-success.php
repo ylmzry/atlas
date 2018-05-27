@@ -28,9 +28,8 @@
                   </div>
 
                   <div class="card-block">
+                  
 
-                      <a href="<?php site_url('category/view/'.$category['id']) ?>" class="btn btn-primary" type="submit">View Category</a>
-s
                   </div>
                 </div>
 

@@ -52,3 +52,7 @@ body.menu-pin .page-sidebar {
 .page-sidebar .sidebar-menu .menu-items > li > a, .page-sidebar .sidebar-menu .menu-items > li ul.sub-menu > li > a {
 	    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.content-link {
+	color: #004a8b;
+}

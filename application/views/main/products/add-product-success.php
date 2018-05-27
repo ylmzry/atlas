@@ -24,8 +24,11 @@
                   <div class="card-header ">
                     <div class="card-title">
                       <?php echo $page_title; ?>
+                    
                     </div>
                   </div>
+
+
 
                 </div>
 

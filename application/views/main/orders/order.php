@@ -17,7 +17,7 @@
 								<tr>
                   <th>OrderID</th>
 									<th>Customer Name</th>
-									<th>Status</th>
+								
 
 									<th>Date</th>
                   <th></th>
@@ -28,7 +28,7 @@
 								echo "<tr>";
 								echo "<td>" . $order['OrderID'] . "</td>";
 								echo "<td>" . $order['Company'] . "</td>";
-                echo "<td>" . $order['OrderStatusID'] . "</td>";
+
 
                 echo "<td>" . $order['OrderDate'] . "</td>";
                 echo "<td>
