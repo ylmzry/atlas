@@ -5,11 +5,17 @@ Customers, Products, Product Categories and Orders.
 
 It programmed on Codeigniter Framework v.3.1.7 with a MySql database.
 
+For every main module of These Project. There is a Controller, a Model and different views(templates)
+for showing results. Static pages has a also a Controller called Page.php.
+
+
 ####
 Libraries:
 
 1. Simplicity Template Library
 --> https://www.grocerycrud.com/codeigniter-simplicity
+It comes with its own Cotroller and series of different views.
+
 
 2. Ion Auth 2 - Authorisation Library
 --> https://github.com/benedmunds/CodeIgniter-Ion-Auth

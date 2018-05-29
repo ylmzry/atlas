@@ -19,7 +19,7 @@
 		 if (!$this->ion_auth->logged_in()) {	redirect('auth/login');	} ?>
       <!-- END JUMBOTRON -->
 			<!-- START CONTAINER FLUID -->
-			<div class="container-fluid p-l-25 p-r-25 p-t-0 p-b-25 sm-padding-10" style="">
+			<div class="container-fluid p-l-25 p-r-25 p-t-0 p-b-25 sm-padding-10" style="display: none">
 				<!-- START ROW -->
 				<div class="row">
 					<div class="col-lg-3 col-sm-6  d-flex flex-column">
